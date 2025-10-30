@@ -91,7 +91,7 @@ SITE PRINCIPAL:
 
 PREÇOS:
 ├── GUIA_PRECOS_RAPIDO.txt      💰 Guia rápido
-└── GUIA_PRECOS.md              📊 Guia detalhado
+└── GUIA_PRECOS.md              📊 Guia detalhado.
 
 DASHBOARD:
 └── DASHBOARD_README.md          ⚙️ Guia do dashboard
