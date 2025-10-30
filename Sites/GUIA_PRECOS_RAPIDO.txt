@@ -1,0 +1,146 @@
+╔═══════════════════════════════════════════════════════════════╗
+║                                                               ║
+║        💰 GUIA RÁPIDO - EDIÇÃO DE PREÇOS E VALORES 💰        ║
+║                                                               ║
+╚═══════════════════════════════════════════════════════════════╝
+
+
+📂 ONDE EDITAR OS PREÇOS DE CADA JOGO
+═══════════════════════════════════════════════════════════════
+
+Cada jogo tem seu próprio arquivo de configuração:
+
+📁 Mir4/config-precos.js         ⚔️ MIR4 (Gold por faixas + Top Up)
+📁 Nightcrows/config-precos.js   🦇 Nightcrows (TWD + Top Up)
+📁 Odin/config-precos.js         ⚡ Odin (Pacotes $4-$80)
+📁 Ymir/config-precos.js         ❄️ Ymir (Valor + Desconto %)
+📁 Wemix/config-precos.js        💎 Wemix (Preço por faixa)
+
+
+⚡ EXEMPLOS SUPER RÁPIDOS
+═══════════════════════════════════════════════════════════════
+
+📌 MUDAR PREÇO GOLD BASE (MIR4):
+   Arquivo: Mir4/config-precos.js
+   Procure: base: 27.00
+   Mude para: base: 30.00  (R$ 30 por 1000 Gold)
+
+📌 MUDAR PACOTE TWD (Nightcrows):
+   Arquivo: Nightcrows/config-precos.js
+   Procure: 1000: { price: 27.40 }
+   Mude para: 1000: { price: 30.00 }
+
+📌 MUDAR PACOTE (Odin):
+   Arquivo: Odin/config-precos.js
+   Procure: 4: 3.44
+   Mude para: 4: 3.50
+
+📌 MUDAR DESCONTO (Ymir):
+   Arquivo: Ymir/config-precos.js
+   Procure: { id: 'p1', valor: 5, desconto: 14, ... }
+   Mude para: { id: 'p1', valor: 5, desconto: 20, ... }
+
+📌 MUDAR PREÇO WEMIX (Wemix):
+   Arquivo: Wemix/config-precos.js
+   Procure: precoUnitario: 5.50
+   Mude para: precoUnitario: 6.00
+
+
+🎮 COMO CADA JOGO FUNCIONA
+═══════════════════════════════════════════════════════════════
+
+⚔️ MIR4:
+   • Gold tem preço por 1000, varia por quantidade
+   • 1k+ = R$ 27 | 5k+ = R$ 26 | 20k+ = R$ 23
+   • Top Up: pacotes de $1 a $100 com preços fixos
+
+🦇 NIGHTCROWS:
+   • TWD (moeda do jogo): 500 a 30000 TWD
+   • Top Up: pacotes de $5 a $100
+   • Cada pacote tem preço fixo em dólar
+
+⚡ ODIN:
+   • 6 pacotes: $4, $9, $23, $30, $40, $80
+   • Preços já incluem desconto aplicado
+   • Sistema simples: preço final direto
+
+❄️ YMIR:
+   • 6 pacotes: $5, $9, $23, $30, $40, $80
+   • Define valor original + % de desconto
+   • Preço final = Valor × (1 - desconto/100)
+
+💎 WEMIX:
+   • Preço varia por faixa de quantidade
+   • 1-10: R$ fixo | 20+: Cotação + margem
+   • Sistema mais complexo e flexível
+
+
+🚀 COMO APLICAR AS MUDANÇAS
+═══════════════════════════════════════════════════════════════
+
+1️⃣ Abra o arquivo config-precos.js do jogo
+2️⃣ Procure o valor que quer mudar (Ctrl + F)
+3️⃣ Edite o número
+4️⃣ Salve o arquivo (Ctrl + S)
+5️⃣ Atualize a página do jogo (Ctrl + F5)
+
+
+📊 VALORES E FORMATOS
+═══════════════════════════════════════════════════════════════
+
+DECIMAIS:
+   ✅ Use ponto: 5.50, 27.40, 3.44
+   ❌ Não use vírgula: 5,50
+
+DESCONTOS/MARGENS:
+   14 = 14% de desconto
+   1.15 = cotação + 15%
+   0.06 = 6% de taxa
+
+PREÇOS:
+   base: 27.00         (R$ 27,00)
+   price: 13.70        ($13,70)
+   precoUnitario: 5.50 (R$ 5,50)
+
+
+🔄 FÓRMULAS RÁPIDAS
+═══════════════════════════════════════════════════════════════
+
+Preço com Desconto:
+   Preço Final = Preço × (1 - desconto)
+   $100 com 15% OFF = 100 × 0.85 = $85
+
+Calcular Desconto:
+   Desconto = (1 - Final/Original) × 100
+   $80 → $68.80 = (1 - 68.80/80) × 100 = 14%
+
+Margem para Cotação:
+   15% a mais = 1.15
+   10% a mais = 1.10
+   5% a mais = 1.05
+
+
+💡 DICAS IMPORTANTES
+═══════════════════════════════════════════════════════════════
+
+✅ Sempre use PONTO para decimais
+✅ Sempre use vírgulas entre itens da lista
+✅ Salve e teste depois de cada mudança
+✅ Use Ctrl + F5 para forçar atualização
+✅ Faça backup antes de mudanças grandes
+
+❌ NUNCA mude os IDs (ex: 'p1', 'p2')
+❌ NUNCA esqueça vírgulas entre objetos
+❌ NUNCA remova estruturas completas
+
+
+📖 DOCUMENTAÇÃO COMPLETA
+═══════════════════════════════════════════════════════════════
+
+Para instruções detalhadas, exemplos e explicações:
+👉 Abra: GUIA_PRECOS.md
+
+
+═══════════════════════════════════════════════════════════════
+     🎮 Sistema criado para facilitar a edição de preços! 💜
+═══════════════════════════════════════════════════════════════

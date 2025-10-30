@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>⭐ Daoshi Store - Loja Premium de Games</title>
+  <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1lLnjQ3NYt6Bd6WapJ2p0EjzfQJIbB-es">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  
+  <!-- Arquivo de Configuração -->
+  <script src="config.js"></script>
+  
+  <style>
+    /* ===== PIXEL ART RETRO - DAOSHI STORE - PALETA ROXA/DOURADA ===== */
+    
+    :root {
+      --purple-dark: #1a0d24;
+      --purple-deep: #2d1b3d;
+      --purple-medium: #4a2d5a;
+      --purple-vibrant: #9933ff;
+      --purple-light: #b366ff;
+      --magenta: #ff1493;
+      --pink: #ff69b4;
+      --hot-pink: #ff1493;
+      --gold: #ffd700;
+      --gold-amber: #ffbf00;
+      --yellow: #ffc107;
+      --text-color: #f5f5f5;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: none !important;
+      image-rendering: pixelated;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: crisp-edges;
+    }
+    
+    body {
+      font-family: 'Press Start 2P', cursive;
+      color: var(--text-color);
+      background: url('https://lh3.googleusercontent.com/d/1ECtr_z7YWp_QugVyvTQBWTiV9d88m5zS') center/cover no-repeat fixed;
+      min-height: 100vh;
+      font-size: 10px;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, 
+        rgba(26, 13, 36, 0.92) 0%,
+        rgba(153, 51, 255, 0.35) 30%,
+        rgba(179, 102, 255, 0.35) 60%,
+        rgba(45, 27, 61, 0.92) 100%
+      );
+      z-index: -1;
+    }
+    
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.1) 0px,
+        rgba(0, 0, 0, 0.1) 1px,
+        transparent 1px,
+        transparent 2px
+      );
+      pointer-events: none;
+      z-index: 9999;
+      animation: scanlines 8s linear infinite;
+    }
+    
+    @keyframes scanlines {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(10px); }
+    }
+    
+    /* ===== NAVIGATION BAR ===== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      background: rgba(26, 13, 36, 0.95);
+      border-bottom: 4px solid var(--gold);
+      padding: 15px 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(153, 51, 255, 0.5);
+    }
+    
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    
+    .nav-logo {
+      font-size: 14px;
+      color: var(--gold);
+      text-shadow: 2px 2px 0 var(--purple-vibrant);
+      cursor: pointer;
+    }
+    
+    .nav-logo:hover {
+      filter: drop-shadow(0 0 10px var(--gold));
+    }
+    
+    .nav-menu {
+      display: flex;
+      gap: 15px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    
+    .nav-link {
+      padding: 8px 15px;
+      color: var(--text-color);
+      background: rgba(153, 51, 255, 0.3);
+      border: 2px solid var(--purple-light);
+      cursor: pointer;
+      font-size: 8px;
+      box-shadow: 3px 3px 0 rgba(0,0,0,0.5);
+    }
+    
+    .nav-link:hover, .nav-link.active {
+      background: var(--purple-vibrant);
+      border-color: var(--gold);
+      box-shadow: 3px 3px 0 rgba(0,0,0,0.5), 0 0 15px var(--gold);
+    }
+    
+    /* ===== HOME BUTTON (aparece nos jogos) ===== */
+    .home-button {
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      background: linear-gradient(135deg, var(--gold-amber) 0%, var(--gold) 100%);
+      border: 4px solid var(--purple-vibrant);
+      padding: 15px 20px;
+      cursor: pointer;
+      z-index: 10000;
+      box-shadow: 5px 5px 0 rgba(0,0,0,0.5);
+      display: none;
+      font-size: 10px;
+      color: var(--purple-dark);
+      font-weight: bold;
+    }
+    
+    .home-button.active {
+      display: block;
+      animation: homeButtonPulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes homeButtonPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); box-shadow: 5px 5px 0 rgba(0,0,0,0.5), 0 0 25px var(--gold); }
+    }
+    
+    .home-button:hover {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-amber) 100%);
+      box-shadow: 5px 5px 0 rgba(0,0,0,0.5), 0 0 30px var(--gold);
+    }
+    
+    /* ===== SECTIONS ===== */
+    .section {
+      display: none;
+      min-height: calc(100vh - 80px);
+      padding: 40px 20px;
+    }
+    
+    .section.active {
+      display: block;
+      animation: sectionFadeIn 0.5s ease-out;
+    }
+    
+    @keyframes sectionFadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    /* ===== HERO SECTION ===== */
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      margin-bottom: 40px;
+    }
+    
+    .hero-logo {
+      font-size: 60px;
+      margin-bottom: 20px;
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .hero h1 {
+      font-size: 32px;
+      color: var(--gold);
+      text-shadow: 
+        4px 4px 0 var(--purple-vibrant),
+        -2px -2px 0 var(--purple-vibrant),
+        2px -2px 0 var(--purple-vibrant),
+        -2px 2px 0 var(--purple-vibrant);
+      margin-bottom: 20px;
+      animation: title-glow 2s ease-in-out infinite;
+    }
+    
+    @keyframes title-glow {
+      0%, 100% { 
+        filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.7)) drop-shadow(0 0 20px rgba(179, 102, 255, 0.5));
+      }
+      50% { 
+        filter: drop-shadow(0 0 25px rgba(255, 215, 0, 1)) drop-shadow(0 0 35px rgba(179, 102, 255, 0.9));
+      }
+    }
+    
+    .hero-tagline {
+      font-size: 12px;
+      color: var(--pink);
+      margin-bottom: 10px;
+    }
+    
+    .hero-subtitle {
+      font-size: 10px;
+      color: var(--gold-amber);
+      margin-bottom: 30px;
+    }
+    
+    .hero-cta {
+      display: inline-block;
+      padding: 15px 30px;
+      background: linear-gradient(135deg, var(--purple-vibrant) 0%, var(--magenta) 100%);
+      border: 4px solid var(--gold);
+      color: var(--text-color);
+      font-size: 10px;
+      cursor: pointer;
+      box-shadow: 6px 6px 0 rgba(0,0,0,0.5);
+      margin: 10px;
+    }
+    
+    .hero-cta:hover {
+      background: linear-gradient(135deg, var(--magenta) 0%, var(--purple-vibrant) 100%);
+      box-shadow: 6px 6px 0 rgba(0,0,0,0.5), 0 0 25px var(--gold);
+    }
+    
+    /* ===== STATS BAR ===== */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 50px;
+    }
+    
+    .stat-item {
+      background: rgba(45, 27, 61, 0.92);
+      border: 3px solid var(--purple-light);
+      padding: 20px;
+      text-align: center;
+      box-shadow: 5px 5px 0 rgba(0,0,0,0.5);
+    }
+    
+    .stat-number {
+      font-size: 24px;
+      color: var(--gold);
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+    }
+    
+    .stat-label {
+      font-size: 8px;
+      color: var(--pink);
+    }
+    
+    /* ===== GAMES GRID ===== */
+    .section-title {
+      font-size: 24px;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 40px;
+      text-shadow: 3px 3px 0 var(--purple-vibrant);
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: '⭐✨⭐';
+      display: block;
+      font-size: 20px;
+      margin-top: 15px;
+    }
+    
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-bottom: 50px;
+    }
+    
+    .game-card {
+      background: rgba(45, 27, 61, 0.92);
+      border: 4px solid var(--purple-light);
+      padding: 25px;
+      cursor: pointer;
+      position: relative;
+      box-shadow: 8px 8px 0 rgba(0,0,0,0.5);
+      animation: cardFadeIn 0.5s ease-out forwards;
+      opacity: 0;
+    }
+    
+    @keyframes cardFadeIn {
+      to { opacity: 1; }
+    }
+    
+    .game-card:nth-child(1) { animation-delay: 0.1s; }
+    .game-card:nth-child(2) { animation-delay: 0.2s; }
+    .game-card:nth-child(3) { animation-delay: 0.3s; }
+    .game-card:nth-child(4) { animation-delay: 0.4s; }
+    .game-card:nth-child(5) { animation-delay: 0.5s; }
+    
+    .game-card:hover {
+      border-color: var(--gold);
+      box-shadow: 8px 8px 0 rgba(0,0,0,0.5), 0 0 30px var(--purple-vibrant);
+      transform: translateY(-8px);
+    }
+    
+    .game-card::before {
+      content: '⭐';
+      position: absolute;
+      top: -18px;
+      right: -18px;
+      font-size: 36px;
+      animation: starSpin 4s linear infinite;
+      filter: drop-shadow(0 0 10px var(--gold));
+    }
+    
+    @keyframes starSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .game-icon {
+      text-align: center;
+      margin-bottom: 20px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .game-icon img {
+      max-width: 80px;
+      max-height: 80px;
+      width: auto;
+      height: auto;
+      filter: drop-shadow(0 0 15px var(--purple-vibrant));
+      image-rendering: auto;
+    }
+    
+    /* Ícones maiores para MIR4, Nightcrows e Odin */
+    .game-icon img.icon-large {
+      max-width: 120px;
+      max-height: 120px;
+    }
+    
+    .game-title {
+      font-size: 16px;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+    }
+    
+    .game-description {
+      font-size: 8px;
+      color: var(--text-color);
+      text-align: center;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    
+    .game-features {
+      font-size: 7px;
+      color: var(--pink);
+      margin-bottom: 20px;
+    }
+    
+    .game-features li {
+      margin: 8px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+    
+    .game-features li::before {
+      content: '▶';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+    
+    .game-btn {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, var(--purple-vibrant) 0%, var(--magenta) 100%);
+      border: 3px solid var(--gold);
+      color: var(--text-color);
+      font-family: 'Press Start 2P', cursive;
+      font-size: 10px;
+      cursor: pointer;
+      box-shadow: 5px 5px 0 rgba(0,0,0,0.5);
+      text-transform: uppercase;
+    }
+    
+    .game-btn:hover {
+      background: linear-gradient(135deg, var(--magenta) 0%, var(--purple-vibrant) 100%);
+      box-shadow: 5px 5px 0 rgba(0,0,0,0.5), 0 0 25px var(--gold);
+    }
+    
+    /* ===== ABOUT SECTION ===== */
+    .about-content {
+      background: rgba(45, 27, 61, 0.92);
+      border: 4px solid var(--purple-light);
+      padding: 40px;
+      margin-bottom: 40px;
+      box-shadow: 8px 8px 0 rgba(0,0,0,0.5);
+    }
+    
+    .about-content h3 {
+      font-size: 18px;
+      color: var(--gold);
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+    }
+    
+    .about-content p {
+      font-size: 9px;
+      line-height: 2;
+      margin-bottom: 20px;
+      color: var(--text-color);
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    .feature-box {
+      background: rgba(153, 51, 255, 0.2);
+      border: 3px solid var(--purple-vibrant);
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .feature-icon {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+    
+    .feature-title {
+      font-size: 10px;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    
+    .feature-text {
+      font-size: 7px;
+      color: var(--pink);
+      line-height: 1.6;
+    }
+    
+    /* ===== TESTIMONIALS ===== */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-bottom: 50px;
+    }
+    
+    .testimonial-card {
+      background: rgba(45, 27, 61, 0.92);
+      border: 3px solid var(--purple-light);
+      padding: 25px;
+      box-shadow: 6px 6px 0 rgba(0,0,0,0.5);
+    }
+    
+    .testimonial-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+    
+    .testimonial-avatar {
+      font-size: 40px;
+    }
+    
+    .testimonial-info h4 {
+      font-size: 10px;
+      color: var(--gold);
+      margin-bottom: 5px;
+    }
+    
+    .testimonial-rating {
+      font-size: 12px;
+      color: var(--gold);
+    }
+    
+    .testimonial-text {
+      font-size: 8px;
+      line-height: 1.8;
+      color: var(--text-color);
+    }
+    
+    /* ===== CONTACT/SOCIAL ===== */
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+    
+    .social-card {
+      background: rgba(45, 27, 61, 0.92);
+      border: 4px solid var(--purple-light);
+      padding: 30px;
+      text-align: center;
+      box-shadow: 6px 6px 0 rgba(0,0,0,0.5);
+    }
+    
+    .social-icon-large {
+      font-size: 60px;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 0 15px var(--purple-vibrant));
+    }
+    
+    .social-card h3 {
+      font-size: 14px;
+      color: var(--gold);
+      margin-bottom: 15px;
+    }
+    
+    .social-card p {
+      font-size: 8px;
+      color: var(--pink);
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+    
+    .social-link {
+      display: inline-block;
+      padding: 12px 25px;
+      background: linear-gradient(135deg, var(--purple-vibrant) 0%, var(--magenta) 100%);
+      border: 3px solid var(--gold);
+      color: var(--text-color);
+      text-decoration: none;
+      font-size: 9px;
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.5);
+    }
+    
+    .social-link:hover {
+      background: linear-gradient(135deg, var(--gold-amber) 0%, var(--gold) 100%);
+      color: var(--purple-dark);
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.5), 0 0 20px var(--gold);
+    }
+    
+    /* ===== GAME IFRAME SECTION ===== */
+    .game-frame-container {
+      width: 100%;
+      height: calc(100vh - 80px);
+      background: white;
+      border: 5px solid var(--gold);
+      box-shadow: 0 0 30px rgba(153, 51, 255, 0.8);
+    }
+    
+    .game-frame-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    /* ===== FOOTER ===== */
+    footer {
+      background: rgba(26, 13, 36, 0.95);
+      border-top: 4px solid var(--gold);
+      padding: 40px 20px 20px;
+      margin-top: 60px;
+    }
+    
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+    
+    .footer-section h3 {
+      font-size: 12px;
+      color: var(--gold);
+      margin-bottom: 15px;
+    }
+    
+    .footer-section p, .footer-section a {
+      font-size: 8px;
+      color: var(--pink);
+      line-height: 2;
+      display: block;
+      margin: 8px 0;
+      text-decoration: none;
+    }
+    
+    .footer-section a:hover {
+      color: var(--gold);
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 2px solid var(--purple-medium);
+      font-size: 7px;
+      color: var(--pink);
+    }
+    
+    .heart {
+      color: var(--gold);
+      animation: heartbeat 1.5s ease-in-out infinite;
+    }
+    
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+    
+    /* ===== DECORATIVE GIF (HIDDEN - Only shown inside game iframes) ===== */
+    .star-gif {
+      display: none !important;
+    }
+    
+    /* ===== PARTICLES (DISABLED) ===== */
+    .particles-container {
+      display: none;
+    }
+    
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      body { font-size: 8px; }
+      .hero h1 { font-size: 20px; }
+      .hero-tagline { font-size: 10px; }
+      .hero-subtitle { font-size: 8px; }
+      .section-title { font-size: 18px; }
+      .games-grid { grid-template-columns: 1fr; }
+      .nav-menu { flex-direction: column; width: 100%; }
+      .nav-link { width: 100%; text-align: center; }
+      .home-button { top: 70px; right: 10px; padding: 10px 15px; font-size: 8px; }
+      .star-gif { width: 100px; bottom: 10px; right: 10px; }
+      .game-frame-container { height: calc(100vh - 60px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Particles -->
+  <div class="particles-container" id="particles"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo" onclick="showSection('home')">⭐ DAOSHI STORE ⭐</div>
+      <ul class="nav-menu">
+        <li class="nav-link active" onclick="showSection('home')" data-section="home">🏠 Início</li>
+        <li class="nav-link" onclick="showSection('games')" data-section="games">🎮 Jogos</li>
+        <li class="nav-link" onclick="showSection('about')" data-section="about">📖 Sobre</li>
+        <li class="nav-link" onclick="showSection('contact')" data-section="contact">💬 Contato</li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Home Button (aparece nos jogos) -->
+  <button class="home-button" id="homeButton" onclick="returnHome()">
+    🏠 VOLTAR AO INÍCIO
+  </button>
+
+  <!-- HOME SECTION -->
+  <div class="section active" id="home">
+    <div class="container">
+      
+      <!-- Hero -->
+      <div class="hero">
+        <div class="hero-logo">⭐💎⭐</div>
+        <h1>DAOSHI STORE</h1>
+        <p class="hero-tagline">✨ A Loja Premium de Games que Você Confia ✨</p>
+        <p class="hero-subtitle">🎮 5 Jogos • Melhores Preços • Entrega Instantânea • Suporte 24/7 🚀</p>
+        <button class="hero-cta" onclick="showSection('games')">🎮 VER JOGOS</button>
+        <button class="hero-cta" onclick="showSection('contact')">💬 FALE CONOSCO</button>
+      </div>
+
+      <!-- Stats Bar -->
+      <div class="stats-bar">
+        <div class="stat-item">
+          <div class="stat-number">5.000+</div>
+          <div class="stat-label">Clientes Satisfeitos</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">50.000+</div>
+          <div class="stat-label">Transações Realizadas</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">5</div>
+          <div class="stat-label">Jogos Disponíveis</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">24/7</div>
+          <div class="stat-label">Suporte Online</div>
+        </div>
+      </div>
+
+      <!-- Featured Games Preview -->
+      <h2 class="section-title">🎮 NOSSOS JOGOS 🎮</h2>
+      <div class="games-grid">
+        <div class="game-card" onclick="loadGame('mir4')">
+          <div class="game-icon"><img src="https://i.imgur.com/XrXphs0.png" alt="MIR4" class="icon-large"></div>
+          <h3 class="game-title">MIR4</h3>
+          <p class="game-description">Gold, Top Up e Serviços Premium</p>
+          <button class="game-btn">⚔️ Acessar</button>
+        </div>
+        <div class="game-card" onclick="loadGame('nightcrows')">
+          <div class="game-icon"><img src="https://i.imgur.com/LLGJGNI.png" alt="NIGHTCROWS" class="icon-large"></div>
+          <h3 class="game-title">NIGHTCROWS</h3>
+          <p class="game-description">Compra de Diamonds Rápida e Segura</p>
+          <button class="game-btn">🦇 Acessar</button>
+        </div>
+        <div class="game-card" onclick="loadGame('odin')">
+          <div class="game-icon"><img src="https://i.imgur.com/aLsQf6y.png" alt="ODIN" class="icon-large"></div>
+          <h3 class="game-title">ODIN</h3>
+          <p class="game-description">Valhalla Rising - Diamonds e Pacotes</p>
+          <button class="game-btn">⚡ Acessar</button>
+        </div>
+        <div class="game-card" onclick="loadGame('ymir')">
+          <div class="game-icon"><img src="https://i.imgur.com/Bna4U0c.png" alt="YMIR"></div>
+          <h3 class="game-title">YMIR</h3>
+          <p class="game-description">Legends of Ymir - Pacotes e Itens</p>
+          <button class="game-btn">❄️ Acessar</button>
+        </div>
+        <div class="game-card" onclick="loadGame('wemix')">
+          <div class="game-icon"><img src="https://i.imgur.com/YTGq40y.png" alt="WEMIX"></div>
+          <h3 class="game-title">WEMIX</h3>
+          <p class="game-description">Conversão WEMIX/BRL Facilitada</p>
+          <button class="game-btn">💎 Acessar</button>
+        </div>
+      </div>
+
+      <!-- Testimonials -->
+      <h2 class="section-title">⭐ DEPOIMENTOS ⭐</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">👤</div>
+            <div class="testimonial-info">
+              <h4>João Silva</h4>
+              <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <p class="testimonial-text">"Melhor loja de games! Comprei gold no MIR4 e recebi na hora. Suporte excelente!"</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">👤</div>
+            <div class="testimonial-info">
+              <h4>Maria Santos</h4>
+              <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <p class="testimonial-text">"Preços justos e entrega rápida. Já fiz várias compras e sempre tudo perfeito!"</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">👤</div>
+            <div class="testimonial-info">
+              <h4>Pedro Costa</h4>
+              <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+          <p class="testimonial-text">"Confiável e profissional. Recomendo para todos os gamers!"</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- GAMES SECTION -->
+  <div class="section" id="games">
+    <div class="container">
+      <h2 class="section-title">🎮 TODOS OS JOGOS 🎮</h2>
+      <div class="games-grid">
+        <div class="game-card" onclick="loadGame('mir4')">
+          <div class="game-icon"><img src="https://i.imgur.com/XrXphs0.png" alt="MIR4" class="icon-large"></div>
+          <h3 class="game-title">MIR4</h3>
+          <p class="game-description">O melhor serviço de Gold e Top Up para MIR4!</p>
+          <ul class="game-features">
+            <li>Calculadora de Gold Automática</li>
+            <li>Conversão Dollar/Real em Tempo Real</li>
+            <li>Múltiplas Formas de Pagamento</li>
+            <li>Entrega Instantânea</li>
+            <li>Suporte Dedicado</li>
+          </ul>
+          <button class="game-btn">⚔️ Acessar MIR4</button>
+        </div>
+        <div class="game-card" onclick="loadGame('nightcrows')">
+          <div class="game-icon"><img src="https://i.imgur.com/LLGJGNI.png" alt="NIGHTCROWS" class="icon-large"></div>
+          <h3 class="game-title">NIGHTCROWS</h3>
+          <p class="game-description">Compre Diamonds para Nightcrows com segurança!</p>
+          <ul class="game-features">
+            <li>Compra Rápida de Diamonds</li>
+            <li>Preços Competitivos</li>
+            <li>Sistema de Pagamento Seguro</li>
+            <li>Entrega Garantida</li>
+            <li>Suporte 24/7</li>
+          </ul>
+          <button class="game-btn">🦇 Acessar Nightcrows</button>
+        </div>
+        <div class="game-card" onclick="loadGame('odin')">
+          <div class="game-icon"><img src="https://i.imgur.com/aLsQf6y.png" alt="ODIN" class="icon-large"></div>
+          <h3 class="game-title">ODIN: VALHALLA</h3>
+          <p class="game-description">Top Up de Diamonds para Odin Valhalla Rising!</p>
+          <ul class="game-features">
+            <li>Pacotes de Diamonds</li>
+            <li>Cálculo Automático de Valores</li>
+            <li>Desconto em Grandes Compras</li>
+            <li>Pagamento Facilitado</li>
+            <li>Entrega Imediata</li>
+          </ul>
+          <button class="game-btn">⚡ Acessar Odin</button>
+        </div>
+        <div class="game-card" onclick="loadGame('ymir')">
+          <div class="game-icon"><img src="https://i.imgur.com/Bna4U0c.png" alt="YMIR"></div>
+          <h3 class="game-title">LEGENDS OF YMIR</h3>
+          <p class="game-description">Pacotes exclusivos e itens para Legends of Ymir!</p>
+          <ul class="game-features">
+            <li>Pacotes Premium</li>
+            <li>Sistema de Login Integrado</li>
+            <li>Compra de Itens Especiais</li>
+            <li>Promoções Exclusivas</li>
+            <li>Suporte Personalizado</li>
+          </ul>
+          <button class="game-btn">❄️ Acessar Ymir</button>
+        </div>
+        <div class="game-card" onclick="loadGame('wemix')">
+          <div class="game-icon"><img src="https://i.imgur.com/YTGq40y.png" alt="WEMIX"></div>
+          <h3 class="game-title">WEMIX</h3>
+          <p class="game-description">Conversão de WEMIX para Real facilitada!</p>
+          <ul class="game-features">
+            <li>Conversor WEMIX/BRL</li>
+            <li>Taxas Transparentes</li>
+            <li>Cotação em Tempo Real</li>
+            <li>Transferência Rápida</li>
+            <li>Sistema Seguro</li>
+          </ul>
+          <button class="game-btn">💎 Acessar Wemix</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT SECTION -->
+  <div class="section" id="about">
+    <div class="container">
+      <h2 class="section-title">📖 SOBRE NÓS 📖</h2>
+      <div class="about-content">
+        <h3>💜 Quem Somos</h3>
+        <p>A DAOSHI STORE é a sua loja premium de confiança para serviços de games. Com anos de experiência no mercado, oferecemos as melhores soluções para jogadores que buscam qualidade, segurança e preços justos.</p>
+        <p>Trabalhamos com os principais jogos do momento, oferecendo Gold, Diamonds, Top Up e muito mais. Nossa missão é proporcionar a melhor experiência de compra para a comunidade gamer.</p>
+        
+        <div class="features-grid">
+          <div class="feature-box">
+            <div class="feature-icon">🚀</div>
+            <div class="feature-title">ENTREGA RÁPIDA</div>
+            <p class="feature-text">Receba seus itens instantaneamente após a confirmação do pagamento</p>
+          </div>
+          <div class="feature-box">
+            <div class="feature-icon">🔒</div>
+            <div class="feature-title">100% SEGURO</div>
+            <p class="feature-text">Transações protegidas e dados criptografados para sua segurança</p>
+          </div>
+          <div class="feature-box">
+            <div class="feature-icon">💰</div>
+            <div class="feature-title">MELHOR PREÇO</div>
+            <p class="feature-text">Preços competitivos e justos para todos os jogadores</p>
+          </div>
+          <div class="feature-box">
+            <div class="feature-icon">💬</div>
+            <div class="feature-title">SUPORTE 24/7</div>
+            <p class="feature-text">Equipe sempre disponível para ajudar você</p>
+          </div>
+          <div class="feature-box">
+            <div class="feature-icon">⭐</div>
+            <div class="feature-title">5.000+ CLIENTES</div>
+            <p class="feature-text">Milhares de jogadores confiam em nossos serviços</p>
+          </div>
+          <div class="feature-box">
+            <div class="feature-icon">✅</div>
+            <div class="feature-title">GARANTIA TOTAL</div>
+            <p class="feature-text">Devolução garantida em caso de problemas</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT SECTION -->
+  <div class="section" id="contact">
+    <div class="container">
+      <h2 class="section-title">💬 ENTRE EM CONTATO 💬</h2>
+      <div class="social-grid">
+        <div class="social-card">
+          <div class="social-icon-large">💬</div>
+          <h3>Discord</h3>
+          <p>Junte-se à nossa comunidade no Discord! Suporte 24/7, promoções exclusivas e muito mais!</p>
+          <a href="https://discord.gg/daoshi" target="_blank" class="social-link">
+            Entrar no Discord
+          </a>
+        </div>
+        <div class="social-card">
+          <div class="social-icon-large">📸</div>
+          <h3>Instagram</h3>
+          <p>Siga-nos no Instagram para novidades, promoções e atualizações sobre os jogos!</p>
+          <a href="https://www.instagram.com/daoshi.store/" target="_blank" class="social-link">
+            Seguir no Instagram
+          </a>
+        </div>
+        <div class="social-card">
+          <div class="social-icon-large">📘</div>
+          <h3>Facebook</h3>
+          <p>Curta nossa página no Facebook e fique por dentro de todas as novidades da loja!</p>
+          <a href="https://www.facebook.com/profile.php?id=61581292253937" target="_blank" class="social-link">
+            Curtir no Facebook
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GAME SECTIONS (MIR4, NIGHTCROWS, ODIN, YMIR, WEMIX) -->
+  <div class="section" id="mir4">
+    <div class="game-frame-container">
+      <iframe src="Mir4/index.html"></iframe>
+    </div>
+  </div>
+
+  <div class="section" id="nightcrows">
+    <div class="game-frame-container">
+      <iframe src="Nightcrows/index.html"></iframe>
+    </div>
+  </div>
+
+  <div class="section" id="odin">
+    <div class="game-frame-container">
+      <iframe src="Odin/index.html"></iframe>
+    </div>
+  </div>
+
+  <div class="section" id="ymir">
+    <div class="game-frame-container">
+      <iframe src="Ymir/index.html"></iframe>
+    </div>
+  </div>
+
+  <div class="section" id="wemix">
+    <div class="game-frame-container">
+      <iframe src="Wemix/index.html"></iframe>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>⭐ DAOSHI STORE</h3>
+        <p>A sua loja premium de games. Qualidade, segurança e os melhores preços do mercado!</p>
+      </div>
+      <div class="footer-section">
+        <h3>🎮 JOGOS</h3>
+        <a href="#" onclick="loadGame('mir4'); return false;">MIR4</a>
+        <a href="#" onclick="loadGame('nightcrows'); return false;">Nightcrows</a>
+        <a href="#" onclick="loadGame('odin'); return false;">Odin: Valhalla</a>
+        <a href="#" onclick="loadGame('ymir'); return false;">Legends of Ymir</a>
+        <a href="#" onclick="loadGame('wemix'); return false;">WEMIX</a>
+      </div>
+      <div class="footer-section">
+        <h3>📞 CONTATO</h3>
+        <a href="https://discord.gg/daoshi" target="_blank">Discord</a>
+        <a href="https://www.instagram.com/daoshi.store/" target="_blank">Instagram</a>
+        <a href="https://www.facebook.com/profile.php?id=61581292253937" target="_blank">Facebook</a>
+      </div>
+      <div class="footer-section">
+        <h3>ℹ️ INFORMAÇÕES</h3>
+        <a href="#" onclick="showSection('about'); return false;">Sobre Nós</a>
+        <a href="#" onclick="showSection('contact'); return false;">Fale Conosco</a>
+        <p>Suporte 24/7</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>⭐ DAOSHI STORE - Sua Loja Premium de Games ⭐</p>
+      <p>Feito com <span class="heart">💜</span> para a comunidade gamer</p>
+      <p>© 2025 Daoshi Store • Todos os direitos reservados</p>
+    </div>
+  </footer>
+
+  <!-- Decorative GIF -->
+  <img src="https://media.giphy.com/media/bzawYMvJVw0KPA0u7M/giphy.gif" alt="Star Butterfly" class="star-gif">
+
+  <script>
+    // ===== CARREGAMENTO DINÂMICO DO CONTEÚDO =====
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      carregarConteudoDinamico();
+    });
+    
+    function carregarConteudoDinamico() {
+      const config = SITE_CONFIG;
+      
+      // Atualizar título da página
+      document.title = `⭐ ${config.loja.nome} - Loja Premium de Games`;
+      
+      // Atualizar logo da navbar
+      const navLogo = document.querySelector('.nav-logo');
+      if (navLogo) navLogo.innerHTML = `⭐ ${config.loja.nome} ⭐`;
+      
+      // Atualizar hero section
+      document.querySelector('.hero-logo').textContent = config.loja.logo;
+      document.querySelector('.hero h1').textContent = config.loja.nome;
+      document.querySelector('.hero-tagline').textContent = config.loja.tagline;
+      document.querySelector('.hero-subtitle').textContent = config.loja.subtitle;
+      
+      // Atualizar estatísticas
+      const statsBar = document.querySelector('.stats-bar');
+      if (statsBar) {
+        statsBar.innerHTML = config.stats.map(stat => `
+          <div class="stat-item">
+            <div class="stat-number">${stat.numero}</div>
+            <div class="stat-label">${stat.label}</div>
+          </div>
+        `).join('');
+      }
+      
+      // Atualizar cards de jogos (preview na home)
+      const gamesGridHome = document.querySelector('#home .games-grid');
+      if (gamesGridHome) {
+        gamesGridHome.innerHTML = config.jogos.map(jogo => `
+          <div class="game-card" onclick="loadGame('${jogo.id}')">
+            <div class="game-icon">
+              <img src="${jogo.icone}" alt="${jogo.nome}" ${jogo.iconeGrande ? 'class="icon-large"' : ''}>
+            </div>
+            <h3 class="game-title">${jogo.nomeCurto || jogo.nome}</h3>
+            <p class="game-description">${jogo.descricaoCurta}</p>
+            <button class="game-btn">${jogo.emoji} ${config.botoes.acessar}</button>
+          </div>
+        `).join('');
+      }
+      
+      // Atualizar cards de jogos (seção completa)
+      const gamesGridFull = document.querySelector('#games .games-grid');
+      if (gamesGridFull) {
+        gamesGridFull.innerHTML = config.jogos.map(jogo => `
+          <div class="game-card" onclick="loadGame('${jogo.id}')">
+            <div class="game-icon">
+              <img src="${jogo.icone}" alt="${jogo.nome}" ${jogo.iconeGrande ? 'class="icon-large"' : ''}>
+            </div>
+            <h3 class="game-title">${jogo.nome}</h3>
+            <p class="game-description">${jogo.descricaoLonga}</p>
+            <ul class="game-features">
+              ${jogo.features.map(feature => `<li>${feature}</li>`).join('')}
+            </ul>
+            <button class="game-btn">${jogo.emoji} ${config.botoes.acessar} ${jogo.nome}</button>
+          </div>
+        `).join('');
+      }
+      
+      // Atualizar depoimentos
+      const testimonialsGrid = document.querySelector('.testimonials-grid');
+      if (testimonialsGrid) {
+        testimonialsGrid.innerHTML = config.depoimentos.map(dep => `
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="testimonial-avatar">${dep.avatar}</div>
+              <div class="testimonial-info">
+                <h4>${dep.nome}</h4>
+                <div class="testimonial-rating">${dep.rating}</div>
+              </div>
+            </div>
+            <p class="testimonial-text">${dep.texto}</p>
+          </div>
+        `).join('');
+      }
+      
+      // Atualizar seção sobre
+      const aboutContent = document.querySelector('.about-content');
+      if (aboutContent) {
+        aboutContent.querySelector('p').textContent = config.loja.descricao;
+        aboutContent.querySelectorAll('p')[1].textContent = config.loja.missao;
+      }
+      
+      // Atualizar features
+      const featuresGrid = document.querySelector('.features-grid');
+      if (featuresGrid) {
+        featuresGrid.innerHTML = config.features.map(feat => `
+          <div class="feature-box">
+            <div class="feature-icon">${feat.icone}</div>
+            <div class="feature-title">${feat.titulo}</div>
+            <p class="feature-text">${feat.texto}</p>
+          </div>
+        `).join('');
+      }
+      
+      // Atualizar redes sociais
+      const socialGrid = document.querySelector('.social-grid');
+      if (socialGrid) {
+        socialGrid.innerHTML = config.social.map(social => `
+          <div class="social-card">
+            <div class="social-icon-large">${social.icone}</div>
+            <h3>${social.nome}</h3>
+            <p>${social.descricao}</p>
+            <a href="${social.url}" target="_blank" class="social-link">
+              ${social.textoBotao}
+            </a>
+          </div>
+        `).join('');
+      }
+      
+      // Atualizar footer
+      const footerSections = document.querySelectorAll('.footer-section');
+      if (footerSections[0]) {
+        footerSections[0].querySelector('p').textContent = config.footer.descricao;
+      }
+      if (footerSections[1]) {
+        footerSections[1].innerHTML = `
+          <h3>🎮 JOGOS</h3>
+          ${config.jogos.map(jogo => `
+            <a href="#" onclick="loadGame('${jogo.id}'); return false;">${jogo.nome}</a>
+          `).join('')}
+        `;
+      }
+      if (footerSections[2]) {
+        footerSections[2].innerHTML = `
+          <h3>📞 CONTATO</h3>
+          ${config.social.map(social => `
+            <a href="${social.url}" target="_blank">${social.nome}</a>
+          `).join('')}
+        `;
+      }
+      
+      // Atualizar footer bottom
+      const footerBottom = document.querySelector('.footer-bottom');
+      if (footerBottom) {
+        footerBottom.innerHTML = `
+          <p>⭐ ${config.loja.nome} - Sua Loja Premium de Games ⭐</p>
+          <p>${config.footer.mensagem}</p>
+          <p>${config.footer.copyright}</p>
+        `;
+      }
+      
+      // Atualizar iframes dos jogos
+      config.jogos.forEach(jogo => {
+        const iframe = document.querySelector(`#${jogo.id} iframe`);
+        if (iframe) {
+          iframe.src = jogo.url;
+        }
+      });
+      
+      // Atualizar botão de voltar
+      const homeButton = document.getElementById('homeButton');
+      if (homeButton) {
+        homeButton.innerHTML = config.botoes.voltarInicio;
+      }
+    }
+    
+    // ===== NAVIGATION SYSTEM =====
+    
+    function showSection(sectionName) {
+      // Remove active class from all sections
+      document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+      });
+      
+      // Remove active class from nav links
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+      });
+      
+      // Add active class to selected section
+      document.getElementById(sectionName).classList.add('active');
+      
+      // Add active class to corresponding nav link
+      const navLink = document.querySelector(`[data-section="${sectionName}"]`);
+      if (navLink) navLink.classList.add('active');
+      
+      // Hide home button for main sections
+      document.getElementById('homeButton').classList.remove('active');
+      
+      // Scroll to top
+      window.scrollTo(0, 0);
+    }
+    
+    function loadGame(gameName) {
+      // Hide all sections
+      document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+      });
+      
+      // Show game section
+      document.getElementById(gameName).classList.add('active');
+      
+      // Remove active from nav links
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+      });
+      
+      // Show home button
+      document.getElementById('homeButton').classList.add('active');
+      
+      // Scroll to top
+      window.scrollTo(0, 0);
+    }
+    
+    function returnHome() {
+      showSection('home');
+    }
+    
+    // ===== PARTICLES ANIMATION (DISABLED) =====
+    // Particles removed per user request
+    
+    // ===== SMOOTH SCROLL =====
+    
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href && href !== '#') {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
+    });
+    
+    // ===== CONSOLE MESSAGE =====
+    
+    console.log('%c⭐ DAOSHI STORE ⭐', 'color: #ffd700; font-size: 24px; font-weight: bold; text-shadow: 2px 2px #9933ff;');
+    console.log('%c🎮 Sua loja premium de games! 🎮', 'color: #9933ff; font-size: 16px;');
+    console.log('%cVisite: discord.gg/daoshi', 'color: #b366ff; font-size: 12px;');
+  </script>
+
+</body>
+</html>

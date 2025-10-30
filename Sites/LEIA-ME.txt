@@ -1,0 +1,101 @@
+╔═══════════════════════════════════════════════════════════════╗
+║                                                               ║
+║           ⭐ DAOSHI STORE - SISTEMA DE CONFIGURAÇÃO ⭐        ║
+║                                                               ║
+╚═══════════════════════════════════════════════════════════════╝
+
+
+📝 COMO FAZER ALTERAÇÕES NO SITE
+═══════════════════════════════════════════════════════════════
+
+✅ ARQUIVO PRINCIPAL PARA EDITAR: config.js
+
+Tudo que você precisa editar está no arquivo "config.js"!
+
+🎯 O QUE VOCÊ PODE MUDAR:
+─────────────────────────────────────────────────────────────
+
+✏️ Nome da loja
+✏️ Slogans e frases
+✏️ Estatísticas (número de clientes, transações, etc.)
+✏️ Informações dos jogos (nome, ícone, descrição, features)
+✏️ Links das redes sociais (Discord, Instagram, Facebook)
+✏️ Depoimentos de clientes
+✏️ Textos do rodapé
+✏️ URLs dos ícones dos jogos
+✏️ Tamanho dos ícones (grande ou normal)
+✏️ Qualquer outro texto do site!
+
+
+🚀 PASSO A PASSO RÁPIDO:
+─────────────────────────────────────────────────────────────
+
+1. Abra o arquivo "config.js" em um editor de texto
+2. Procure o que você quer mudar (está tudo organizado)
+3. Faça a alteração
+4. Salve o arquivo (Ctrl + S)
+5. Abra ou atualize a página "index.html" no navegador
+6. Pressione Ctrl + F5 para recarregar
+
+
+📖 EXEMPLOS RÁPIDOS:
+─────────────────────────────────────────────────────────────
+
+MUDAR NOME DA LOJA:
+-------------------
+Procure por: loja: { nome: "DAOSHI STORE"
+Mude para:   loja: { nome: "SEU NOME AQUI"
+
+
+MUDAR LINK DO DISCORD:
+----------------------
+Procure por: url: "https://discord.gg/daoshi"
+Mude para:   url: "https://discord.gg/SEULINK"
+
+
+MUDAR ÍCONE DE UM JOGO:
+-----------------------
+Procure o jogo que você quer (ex: mir4)
+Mude a linha: icone: "https://i.imgur.com/XrXphs0.png"
+Para:         icone: "https://i.imgur.com/SUANOVA.png"
+
+
+MUDAR TAMANHO DO ÍCONE:
+-----------------------
+iconeGrande: true   → Ícone GRANDE (120px)
+iconeGrande: false  → Ícone NORMAL (80px)
+
+
+⚠️ IMPORTANTE:
+─────────────────────────────────────────────────────────────
+
+✅ Use vírgulas entre os itens
+✅ Use aspas duplas para textos: "assim"
+✅ NÃO coloque vírgula no último item
+✅ Salve o arquivo antes de testar
+✅ Limpe o cache do navegador (Ctrl + F5)
+
+❌ NÃO mude os "id" dos jogos (mir4, nightcrows, etc.)
+❌ NÃO remova as estruturas principais
+❌ NÃO esqueça de fechar aspas e chaves
+
+
+📚 DOCUMENTAÇÃO COMPLETA:
+─────────────────────────────────────────────────────────────
+
+Abra o arquivo "GUIA_DE_EDICAO.md" para ver exemplos
+detalhados e explicações completas!
+
+
+💡 DICA DE OURO:
+─────────────────────────────────────────────────────────────
+
+Se algo der errado, desfaça a última mudança e tente
+novamente. O navegador mostrará erros no Console (F12)
+se houver algum problema de sintaxe.
+
+
+═══════════════════════════════════════════════════════════════
+        Desenvolvido com 💜 para facilitar sua vida!
+═══════════════════════════════════════════════════════════════
+

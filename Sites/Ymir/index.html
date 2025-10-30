@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>⚙️ Daoshi Store - Ymir - Pixel Retrô ⚙️</title>
+  <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1lLnjQ3NYt6Bd6WapJ2p0EjzfQJIbB-es">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  
+  <!-- 💰 Arquivo de Configuração de Preços -->
+  <script src="config-precos.js"></script>
+  
+  <style>
+    /* ===== PIXEL ART RETRO - LEGENDS OF YMIR - PALETA GÉLIDA ÁRTICA ===== */
+    
+    :root {
+      /* Paleta Universal Roxa/Dourada */
+      --purple-dark: #1a0d24;
+      --purple-deep: #2d1b3d;
+      --purple-medium: #4a2d5a;
+      --purple-vibrant: #9933ff;
+      --purple-light: #b366ff;
+      --magenta: #cc66ff;
+      --gold: #ffd700;
+      --gold-amber: #ffbf00;
+      --yellow: #ffc107;
+      
+      --ice-silver: #b366ff;
+      --ice-blue: #9933ff;
+      --glacial-white: #f5f5f5;
+      --steel-gray: #4a2d5a;
+      --charcoal-black: #1a0d24;
+      --frost-cyan: #cc66ff;
+      --arctic-blue: #b366ff;
+      --deep-ice: #9933ff;
+      
+      --metal-silver: #b366ff;
+      --metal-light: #f5f5f5;
+      --metal-dark: #4a2d5a;
+      --metal-darker: #2d1b3d;
+      --steel-blue: #9933ff;
+      --chrome-color: #b366ff;
+      --text-color: #f5f5f5;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: none !important;
+      animation-timing-function: steps(4, end) !important;
+      image-rendering: pixelated;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: crisp-edges;
+    }
+    
+    body {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 10px;
+      line-height: 1.6;
+      color: var(--text-color);
+      background: url('https://lh3.googleusercontent.com/d/1ECtr_z7YWp_QugVyvTQBWTiV9d88m5zS') center/cover no-repeat fixed;
+      position: relative;
+      min-height: 100vh;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(180deg, 
+        rgba(26, 13, 36, 0.90) 0%,
+        rgba(153, 51, 255, 0.3) 20%,
+        rgba(179, 102, 255, 0.5) 50%,
+        rgba(204, 102, 255, 0.3) 80%,
+        rgba(45, 27, 61, 0.90) 100%
+      );
+      z-index: -1;
+      pointer-events: none;
+    }
+    
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15) 0px,
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+      );
+      z-index: 9999;
+      pointer-events: none;
+    }
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* ===== HEADER ===== */
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    
+    header h1 {
+      font-size: 28px;
+      color: var(--metal-light);
+      text-shadow: 
+        4px 4px 0 var(--metal-dark),
+        8px 8px 0 var(--metal-darker),
+        0 0 20px rgba(192, 192, 192, 0.8);
+      margin-bottom: 20px;
+      animation: float 3s ease-in-out infinite, metal-glow 2s ease-in-out infinite;
+    }
+    
+    header p {
+      font-size: 14px;
+      color: var(--metal-silver);
+      text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+    
+    @keyframes metal-glow {
+      0%, 100% { text-shadow: 4px 4px 0 var(--metal-dark), 8px 8px 0 var(--metal-darker), 0 0 20px rgba(176, 224, 230, 0.9); }
+      50% { text-shadow: 4px 4px 0 var(--metal-dark), 8px 8px 0 var(--metal-darker), 0 0 40px rgba(224, 255, 255, 1), 0 0 60px rgba(173, 216, 230, 0.8); }
+    }
+    
+    .cotacao-display {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: var(--metal-darker);
+      padding: 12px 16px;
+      border-radius: 0;
+      border: 4px solid var(--metal-silver);
+      box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
+      font-size: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .cotacao-display .icon {
+      font-size: 16px;
+      filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.8));
+    }
+    
+    /* ===== PANELS ===== */
+    .main-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    
+    .panel {
+      background: rgba(74, 74, 74, 0.95);
+      border: 4px solid var(--metal-silver);
+      border-radius: 0;
+      padding: 20px;
+      box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+    
+    .panel::before {
+      content: '❄️';
+      position: absolute;
+      top: -8px;
+      left: 10px;
+      font-size: 20px;
+      animation: float 3s ease-in-out infinite;
+      filter: drop-shadow(0 0 10px rgba(176, 224, 230, 0.9)) drop-shadow(0 0 20px rgba(224, 255, 255, 0.6));
+    }
+    
+    .panel::after {
+      content: '💎';
+      position: absolute;
+      bottom: -8px;
+      right: 10px;
+      font-size: 16px;
+      filter: drop-shadow(0 0 8px rgba(173, 216, 230, 0.8)) drop-shadow(0 0 15px rgba(176, 224, 230, 0.5));
+    }
+    
+    @keyframes gear-spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    .panel-header {
+      text-align: center;
+      border-bottom: 4px solid var(--metal-silver);
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+    
+    .panel-header h2 {
+      font-size: 12px;
+      color: var(--metal-light);
+      text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
+    }
+    
+    .panel-header h2::after {
+      content: ' ⚡';
+    }
+    
+    h3 {
+      font-size: 11px;
+      color: var(--metal-silver);
+      text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
+      margin-bottom: 12px;
+    }
+    
+    /* ===== FORMS ===== */
+    label {
+      display: block;
+      font-size: 9px;
+      color: var(--metal-light);
+      margin-bottom: 8px;
+      text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
+    }
+    
+    input[type="number"],
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      background: rgba(128, 128, 128, 0.3);
+      color: var(--text-color);
+      border: 3px solid var(--metal-silver);
+      border-radius: 0;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 10px;
+      box-shadow: inset 4px 4px 0 rgba(0, 0, 0, 0.3);
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: textfield;
+    }
+    
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      appearance: none;
+      margin: 0;
+    }
+    
+    input:focus {
+      border-color: var(--steel-blue);
+      outline: none;
+      box-shadow: inset 4px 4px 0 rgba(0, 0, 0, 0.3), 0 0 0 4px rgba(70, 130, 180, 0.3);
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    /* ===== PACOTE INFO ===== */
+    .pacote-info {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+      font-size: 8px;
+      padding: 8px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 2px solid var(--metal-dark);
+    }
+    
+    .pacote-price {
+      color: var(--steel-blue);
+      font-weight: bold;
+      text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.8);
+    }
+    
+    .pacote-section {
+      padding: 16px;
+      margin-bottom: 20px;
+      background: rgba(0, 0, 0, 0.2);
+      border: 2px solid var(--metal-dark);
+    }
+    
+    .pacote-total {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 12px;
+      margin-top: 12px;
+      border-top: 3px solid var(--metal-silver);
+      font-size: 10px;
+    }
+    
+    .pacote-total-label {
+      color: var(--metal-light);
+      text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
+    }
+    
+    .pacote-total-value {
+      color: var(--steel-blue);
+      font-weight: bold;
+      text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
+    }
+    
+    /* ===== BUTTONS ===== */
+    .btn, .btn-pix, .btn-binance {
+      padding: 12px 20px;
+      background: linear-gradient(180deg, var(--metal-silver) 0%, var(--metal-dark) 100%);
+      border: 4px solid var(--metal-light);
+      border-radius: 0;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 9px;
+      color: var(--metal-darker);
+      cursor: pointer;
+      box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
+      text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    
+    .btn:hover, .btn-pix:hover, .btn-binance:hover {
+      background: linear-gradient(180deg, var(--metal-light) 0%, var(--metal-silver) 100%);
+      box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.7), 0 0 20px rgba(192, 192, 192, 0.6);
+    }
+    
+    .btn:active, .btn-pix:active, .btn-binance:active {
+      box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+      transform: translate(2px, 2px);
+    }
+    
+    .btn-cta-pulse {
+      animation: pulse-metal 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulse-metal {
+      0%, 100% {
+        box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
+        border-color: var(--metal-light);
+      }
+      50% {
+        box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5), 0 0 25px rgba(176, 224, 230, 0.9), 0 0 45px rgba(224, 255, 255, 0.6);
+        border-color: var(--steel-blue);
+      }
+    }
+    
+    /* ===== TOTAL SECTION ===== */
+    .total-section {
+      padding: 24px;
+      margin-bottom: 20px;
+      border: 4px solid var(--metal-silver);
+      border-radius: 0;
+      background: rgba(74, 74, 74, 0.95);
+    }
+    
+    .total-grand {
+      font-size: 16px;
+      font-weight: bold;
+      margin: 16px 0;
+      text-align: center;
+      color: var(--steel-blue);
+      text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.8);
+      animation: pulse-metal 2s ease-in-out infinite;
+    }
+    
+    /* ===== PAYMENT METHODS ===== */
+    .payment-method {
+      padding: 16px;
+      margin-bottom: 16px;
+      border-left: 6px solid var(--metal-silver);
+      background: rgba(0, 0, 0, 0.3);
+      border-top: 2px solid var(--metal-dark);
+      border-right: 2px solid var(--metal-dark);
+      border-bottom: 2px solid var(--metal-dark);
+    }
+    
+    .payment-method-title {
+      display: flex;
+      align-items: center;
+      font-size: 11px;
+      color: var(--metal-light);
+      margin-bottom: 12px;
+      text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
+    }
+    
+    .payment-method-title svg {
+      margin-right: 8px;
+      filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.8));
+    }
+    
+    .payment-details {
+      font-size: 9px;
+      line-height: 1.8;
+    }
+    
+    .payment-details strong {
+      color: var(--metal-silver);
+    }
+    
+    /* ===== LOGIN SECTION ===== */
+    .login-section {
+      padding-top: 20px;
+      border-top: 4px solid var(--metal-silver);
+      margin-top: 20px;
+    }
+    
+    /* ===== GLACIAL GIF ===== */
+    .metal-gif {
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      width: 240px;
+      height: auto;
+      z-index: 1000;
+      pointer-events: none;
+      filter: 
+        drop-shadow(0 0 15px rgba(153, 51, 255, 0.8)) 
+        drop-shadow(0 0 25px rgba(255, 215, 0, 0.6));
+      image-rendering: pixelated;
+    }
+    
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      body {
+        font-size: 8px;
+      }
+      
+      header h1 {
+        font-size: 16px;
+      }
+      
+      header p {
+        font-size: 10px;
+      }
+      
+      .cotacao-display {
+        position: relative;
+        margin: 20px auto 0;
+        max-width: 100%;
+        font-size: 8px;
+      }
+      
+      .panel-header h2 {
+        font-size: 10px;
+      }
+      
+      .metal-gif {
+        width: 160px;
+        right: 10px;
+        bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <header>
+      <div>
+        <h1>⚙️ DAOSHI STORE - YMIR 🤖</h1>
+        <p>🎮 BORA CASHAR??? 💎</p>
+      </div>
+      <div class="cotacao-display">
+        <span class="icon">🔩</span>
+        <span id="cotacao">Carregando cotação...</span>
+      </div>
+    </header>
+    
+    <div class="main-content">
+      
+      <div class="panel">
+        <div class="panel-header">
+          <h2 data-titulo-grupo="grupo1">
+            Pacotes de $4 e $9
+          </h2>
+        </div>
+        
+        <div class="pacote-section">
+          <div class="form-group">
+            <label data-label-pacote="p1">Quantidade de $4:</label>
+            <input type="number" id="p1" value="0">
+            <div class="pacote-info">
+              <span>Preço com desconto:</span>
+              <span class="pacote-price">$0.00</span>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label data-label-pacote="p2">Quantidade de $9:</label>
+            <input type="number" id="p2" value="0">
+            <div class="pacote-info">
+              <span>Preço com desconto:</span>
+              <span class="pacote-price">$0.00</span>
+            </div>
+          </div>
+          
+          <div class="pacote-total">
+            <div class="pacote-total-label">Total:</div>
+            <div class="pacote-total-value">
+              R$<span id="totalRgrupo1">0.00</span> / $<span id="totalDgrupo1">0.00</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="panel-header">
+          <h2 data-titulo-grupo="grupo2">
+            Pacotes de $23 e $30
+          </h2>
+        </div>
+        
+        <div class="pacote-section">
+          <div class="form-group">
+            <label data-label-pacote="p3">Quantidade de $23:</label>
+            <input type="number" id="p3" value="0">
+            <div class="pacote-info">
+              <span>Preço com desconto:</span>
+              <span class="pacote-price">$0.00</span>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label data-label-pacote="p4">Quantidade de $30:</label>
+            <input type="number" id="p4" value="0">
+            <div class="pacote-info">
+              <span>Preço com desconto:</span>
+              <span class="pacote-price">$0.00</span>
+            </div>
+          </div>
+          
+          <div class="pacote-total">
+            <div class="pacote-total-label">Total:</div>
+            <div class="pacote-total-value">
+              R$<span id="totalRgrupo2">0.00</span> / $<span id="totalDgrupo2">0.00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="panel">
+        <div class="panel-header">
+          <h2 data-titulo-grupo="grupo3">
+            Pacotes de $40 e $80
+          </h2>
+        </div>
+        
+        <div class="pacote-section">
+          <div class="form-group">
+            <label data-label-pacote="p5">Quantidade de $40:</label>
+            <input type="number" id="p5" value="0">
+            <div class="pacote-info">
+              <span>Preço com desconto:</span>
+              <span class="pacote-price">$0.00</span>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label data-label-pacote="p6">Quantidade de $80:</label>
+            <input type="number" id="p6" value="0">
+            <div class="pacote-info">
+              <span>Preço com desconto:</span>
+              <span class="pacote-price">$0.00</span>
+            </div>
+          </div>
+          
+          <div class="pacote-total">
+            <div class="pacote-total-label">Total:</div>
+            <div class="pacote-total-value">
+              R$<span id="totalRgrupo3">0.00</span> / $<span id="totalDgrupo3">0.00</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="login-section">
+          <h3>🔐 Informações de Login</h3>
+          
+          <div class="form-group">
+            <label>Login:</label>
+            <input type="text" id="login">
+          </div>
+          
+          <div class="form-group">
+            <label>Password:</label>
+            <input type="text" id="password">
+          </div>
+          
+          <div class="form-group">
+            <label>Nickname:</label>
+            <input type="text" id="nickname">
+          </div>
+          
+          <div class="form-group">
+            <label>Level:</label>
+            <input type="text" id="level">
+          </div>
+          
+          <div class="form-group">
+            <label>Server:</label>
+            <input type="text" id="server">
+          </div>
+          
+          <div class="form-group">
+            <label>Método de Login (ex: Gmail, Facebook):</label>
+            <input type="text" id="metodoLogin">
+          </div>
+        </div>
+      </div>
+      
+      <div class="panel">
+        <div class="panel-header">
+          <h2>
+            💰 Resumo e Pagamento
+          </h2>
+        </div>
+        
+        <div class="total-section">
+          <h3>💎 Total dos Pacotes</h3>
+          
+          <div class="total-grand">
+            R$<span id="totalRPacotes">0.00</span>
+          </div>
+          
+          <div class="total-grand">
+            $<span id="totalDPacotes">0.00</span>
+          </div>
+          
+          <button class="btn btn-cta-pulse" onclick="copiarInformacoes()">
+            📋 Copiar Total + Login
+          </button>
+        </div>
+        
+        <div class="payment-method">
+          <div class="payment-method-title">
+            💚 Pix
+          </div>
+          <div class="payment-details">
+            <p><strong>CELULAR:</strong> 14988231270</p>
+            <p><strong>Nome:</strong> DAOSHI TRADE</p>
+            <button class="btn-pix" onclick="copiarPix()">
+              📋 Copiar Dados PIX
+            </button>
+          </div>
+        </div>
+        
+        <div class="payment-method">
+          <div class="payment-method-title">
+            💰 Binance
+          </div>
+          <div class="payment-details">
+            <p><strong>Email:</strong> daoshicashstore@gmail.com</p>
+            <button class="btn-binance" onclick="copiarBinance()">
+              📋 Copiar Email Binance
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Metal GIF -->
+  <img src="https://media.giphy.com/media/bzawYMvJVw0KPA0u7M/giphy.gif" alt="Metal Theme" class="metal-gif">
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+╔═══════════════════════════════════════════════════════════════╗
+║                                                               ║
+║              🎮 BEM-VINDO À DAOSHI STORE! 🎮                 ║
+║                   COMECE POR AQUI! ⭐                        ║
+║                                                               ║
+╚═══════════════════════════════════════════════════════════════╝
+
+
+👋 OLÁ! ESTE É SEU GUIA DE INÍCIO RÁPIDO!
+═══════════════════════════════════════════════════════════════
+
+Criamos um SISTEMA COMPLETO de configuração para você!
+Agora é SUPER FÁCIL editar QUALQUER coisa do site! 🚀
+
+
+📚 QUAL ARQUIVO DEVO ABRIR?
+═══════════════════════════════════════════════════════════════
+
+┌───────────────────────────────────────────────────────────┐
+│ 🌐 QUER EDITAR O SITE PRINCIPAL?                          │
+│    (nome, textos, jogos, links sociais, ícones)           │
+└───────────────────────────────────────────────────────────┘
+   
+   ▶️ EDITE: config.js
+   📖 LEIA: LEIA-ME.txt (rápido)
+   📖 LEIA: GUIA_DE_EDICAO.md (completo)
+
+
+┌───────────────────────────────────────────────────────────┐
+│ 💰 QUER EDITAR PREÇOS DOS JOGOS?                          │
+│    (valores, taxas, pacotes, promoções)                    │
+└───────────────────────────────────────────────────────────┘
+   
+   ▶️ EDITE: 
+      • Mir4/config-precos.js       (MIR4)
+      • Nightcrows/config-precos.js (Nightcrows)
+      • Odin/config-precos.js       (Odin)
+      • Ymir/config-precos.js       (Ymir)
+      • Wemix/config-precos.js      (Wemix)
+   
+   📖 LEIA: GUIA_PRECOS_RAPIDO.txt (rápido)
+   📖 LEIA: GUIA_PRECOS.md (completo)
+
+
+┌───────────────────────────────────────────────────────────┐
+│ 📋 QUER VER TUDO ORGANIZADO?                              │
+│    (estrutura completa, exemplos, dicas)                   │
+└───────────────────────────────────────────────────────────┘
+   
+   📖 LEIA: README_CONFIGURACAO.txt
+
+
+🎯 EXEMPLOS SUPER RÁPIDOS
+═══════════════════════════════════════════════════════════════
+
+1️⃣ MUDAR NOME DA LOJA:
+   📄 Abra: config.js
+   🔍 Procure: nome: "DAOSHI STORE"
+   ✏️ Mude para: nome: "SEU NOME"
+   💾 Salve (Ctrl + S)
+   🔄 Atualize navegador (Ctrl + F5)
+
+2️⃣ MUDAR PREÇO DOS DIAMONDS:
+   📄 Abra: Nightcrows/config-precos.js
+   🔍 Procure: valorEmReais: 0.80
+   ✏️ Mude para: valorEmReais: 1.00
+   💾 Salve (Ctrl + S)
+   🔄 Atualize navegador (Ctrl + F5)
+
+3️⃣ MUDAR LINK DO DISCORD:
+   📄 Abra: config.js
+   🔍 Procure: discord.gg/daoshi
+   ✏️ Mude para: discord.gg/SEULINK
+   💾 Salve (Ctrl + S)
+   🔄 Atualize navegador (Ctrl + F5)
+
+4️⃣ CRIAR PROMOÇÃO DE 20%:
+   📄 Abra: Odin/config-precos.js
+   🔍 Procure um pacote
+   ✏️ Adicione: desconto: 0.20,
+   💾 Salve (Ctrl + S)
+   🔄 Atualize navegador (Ctrl + F5)
+
+
+⚡ ATALHOS DO TECLADO
+═══════════════════════════════════════════════════════════════
+
+Ctrl + O  →  Abrir arquivo
+Ctrl + S  →  Salvar arquivo
+Ctrl + F  →  Procurar no arquivo
+Ctrl + Z  →  Desfazer
+Ctrl + F5 →  Atualizar navegador (limpa cache)
+F12       →  Abrir Console (ver erros)
+
+
+💡 DICAS DE OURO
+═══════════════════════════════════════════════════════════════
+
+✅ SEMPRE use PONTO para decimais: 5.50
+✅ SEMPRE use vírgulas entre itens da lista
+✅ SEMPRE salve antes de testar
+✅ SEMPRE limpe o cache (Ctrl + F5)
+✅ SEMPRE faça backup antes de mudanças grandes
+
+❌ NUNCA use vírgula para decimais: 5,50
+❌ NUNCA esqueça de fechar aspas e chaves
+❌ NUNCA mude os IDs dos jogos
+❌ NUNCA remova estruturas completas
+
+
+📂 TODOS OS ARQUIVOS DE CONFIGURAÇÃO
+═══════════════════════════════════════════════════════════════
+
+🌐 SITE PRINCIPAL:
+   ⭐ config.js                   ← Edite aqui!
+   📖 LEIA-ME.txt                 ← Guia rápido
+   📖 GUIA_DE_EDICAO.md          ← Guia completo
+
+💰 PREÇOS DOS JOGOS:
+   ⭐ Mir4/config-precos.js      ← MIR4
+   ⭐ Nightcrows/config-precos.js ← Nightcrows
+   ⭐ Odin/config-precos.js      ← Odin
+   ⭐ Ymir/config-precos.js      ← Ymir
+   ⭐ Wemix/config-precos.js     ← Wemix
+   
+   📖 GUIA_PRECOS_RAPIDO.txt     ← Guia rápido
+   📖 GUIA_PRECOS.md             ← Guia completo
+
+📋 DOCUMENTAÇÃO GERAL:
+   📖 README_CONFIGURACAO.txt     ← Visão geral
+   📄 _COMECE_AQUI.txt           ← Este arquivo!
+
+
+🚀 PASSO A PASSO PARA PRIMEIRA EDIÇÃO
+═══════════════════════════════════════════════════════════════
+
+1. Escolha O QUE você quer mudar
+   ↓
+2. Abra o ARQUIVO correto (veja lista acima)
+   ↓
+3. Use Ctrl + F para PROCURAR o que quer mudar
+   ↓
+4. EDITE o valor
+   ↓
+5. SALVE o arquivo (Ctrl + S)
+   ↓
+6. Abra/ATUALIZE o site no navegador (Ctrl + F5)
+   ↓
+7. PRONTO! ✨
+
+
+❓ PRECISA DE AJUDA?
+═══════════════════════════════════════════════════════════════
+
+PROBLEMA: Não sei qual arquivo editar
+SOLUÇÃO: Veja a lista acima ou README_CONFIGURACAO.txt
+
+PROBLEMA: Mudei mas não apareceu
+SOLUÇÃO: Pressione Ctrl + F5 no navegador
+
+PROBLEMA: Site ficou em branco
+SOLUÇÃO: Erro de sintaxe! Desfaça (Ctrl + Z) e tente novamente
+
+PROBLEMA: Como adicionar novo jogo?
+SOLUÇÃO: Veja GUIA_DE_EDICAO.md, seção "Adicionar novo jogo"
+
+PROBLEMA: Como criar promoção?
+SOLUÇÃO: Veja GUIA_PRECOS.md, seção do jogo específico
+
+
+📞 LINKS RÁPIDOS PARA DOCUMENTAÇÃO
+═══════════════════════════════════════════════════════════════
+
+Site Principal:
+   GUIA_DE_EDICAO.md    → Exemplos e explicações detalhadas
+   LEIA-ME.txt          → Resumo rápido
+
+Preços:
+   GUIA_PRECOS.md       → Todos os jogos explicados
+   GUIA_PRECOS_RAPIDO.txt → Exemplos rápidos
+
+Visão Geral:
+   README_CONFIGURACAO.txt → Estrutura completa
+
+
+✨ RESUMO FINAL
+═══════════════════════════════════════════════════════════════
+
+Tudo que você precisa editar está em arquivos .js!
+
+config.js              → Site principal
+Jogo/config-precos.js  → Preços de cada jogo
+
+É só abrir, editar, salvar e atualizar! 
+
+NÃO precisa mexer no HTML! 🎉
+
+
+═══════════════════════════════════════════════════════════════
+
+           🎮 Divirta-se editando seu site! 🎮
+          Feito com 💜 para facilitar sua vida!
+
+═══════════════════════════════════════════════════════════════
+
+
+📌 NOTA: Salve este arquivo nos seus Favoritos para 
+         consultar sempre que precisar! ⭐
+
