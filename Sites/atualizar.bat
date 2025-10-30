@@ -1,12 +1,12 @@
 @echo off
-cd /d D:\Cursor\Sites
+cd /d D:\Cursor
 
 echo ============================
 echo    GIT COMMIT AUTOMATICO
 echo ============================
 echo.
 
-git add .
+git add Sites/
 echo.
 set /p msg=Mensagem do commit: 
 
