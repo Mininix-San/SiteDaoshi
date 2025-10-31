@@ -302,6 +302,310 @@
       margin-bottom: 35px;
     }
     
+    /* ===== MELHORIAS VISUAIS - ADICIONAR JOGO ===== */
+    
+    /* Inputs modernos e bonitos */
+    #addGameForm input[type="text"],
+    #addGameForm input[type="url"],
+    #addGameForm input[type="number"],
+    #addGameForm select,
+    #addGameForm textarea {
+      background: linear-gradient(135deg, rgba(26, 13, 36, 0.9), rgba(45, 27, 61, 0.9));
+      border: 2px solid var(--purple-medium);
+      border-radius: 12px;
+      padding: 15px 20px;
+      color: var(--text-color);
+      font-size: 14px;
+      transition: all 0.3s ease;
+      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    #addGameForm input:focus,
+    #addGameForm select:focus,
+    #addGameForm textarea:focus {
+      outline: none;
+      border-color: var(--purple-vibrant);
+      box-shadow: 0 0 20px rgba(153, 51, 255, 0.5), inset 0 2px 8px rgba(0, 0, 0, 0.3);
+      transform: translateY(-2px);
+    }
+    
+    #addGameForm input::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+    
+    /* Labels estilizadas */
+    #addGameForm label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--gold);
+      font-weight: 600;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    #addGameForm small {
+      display: block;
+      margin-top: 5px;
+      color: var(--pink);
+      font-size: 11px;
+      font-style: italic;
+    }
+    
+    /* Select customizado */
+    #addGameForm select {
+      cursor: pointer;
+      background-image: linear-gradient(135deg, rgba(26, 13, 36, 0.9), rgba(45, 27, 61, 0.9));
+      padding-right: 40px;
+      appearance: none;
+      background-position: right 15px center;
+      background-repeat: no-repeat;
+    }
+    
+    /* Checkboxes modernos */
+    #addGameForm input[type="checkbox"] {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      accent-color: var(--purple-vibrant);
+    }
+    
+    /* Faixas de moeda e pacotes - MUITO MAIS BONITAS */
+    .currency-tier, .package-item {
+      background: linear-gradient(135deg, rgba(153, 51, 255, 0.15), rgba(255, 105, 180, 0.15));
+      border: 3px solid transparent;
+      background-clip: padding-box;
+      padding: 25px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      position: relative;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .currency-tier::before, .package-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 15px;
+      padding: 3px;
+      background: linear-gradient(135deg, var(--purple-vibrant), var(--pink), var(--gold));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+    
+    .currency-tier:hover, .package-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(153, 51, 255, 0.4);
+    }
+    
+    .currency-tier h5, .package-item h5 {
+      margin-bottom: 20px;
+      font-size: 16px;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 15px;
+      border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+    }
+    
+    /* Botão de remover estilizado */
+    .currency-tier button[onclick*="remove"],
+    .package-item button[onclick*="remove"] {
+      background: linear-gradient(135deg, #ff3366, #ff1493);
+      border: 2px solid #ff1493;
+      color: white;
+      padding: 8px 15px;
+      cursor: pointer;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 51, 102, 0.3);
+    }
+    
+    .currency-tier button[onclick*="remove"]:hover,
+    .package-item button[onclick*="remove"]:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(255, 51, 102, 0.5);
+    }
+    
+    /* Seções de formulário com gradientes */
+    #addGameForm .form-section {
+      background: linear-gradient(135deg, rgba(26, 13, 36, 0.7), rgba(45, 27, 61, 0.7));
+      border: 2px solid var(--purple-medium);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    #addGameForm .form-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(153, 51, 255, 0.1) 0%, transparent 70%);
+      animation: rotate 20s linear infinite;
+      pointer-events: none;
+    }
+    
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    /* Seção de sistema de preços destacada */
+    #addGameForm .form-section[style*="gold"] {
+      border: 3px solid var(--gold);
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.3), 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Títulos de seção mais bonitos */
+    #addGameForm .section-title {
+      font-size: 18px;
+      color: var(--gold);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    #addGameForm .section-icon {
+      font-size: 28px;
+      filter: drop-shadow(0 0 10px var(--purple-vibrant));
+    }
+    
+    /* Badges informativos */
+    .info-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--purple-vibrant), var(--pink));
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-left: 10px;
+      box-shadow: 0 4px 15px rgba(153, 51, 255, 0.4);
+    }
+    
+    /* Botões de ação melhorados */
+    #addGameForm .action-btn {
+      position: relative;
+      overflow: hidden;
+      font-size: 14px;
+      padding: 15px 30px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+    
+    #addGameForm .action-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+    
+    #addGameForm .action-btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+    
+    #addGameForm .action-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(153, 51, 255, 0.5);
+    }
+    
+    /* Container de botões organizado */
+    #addGameForm .form-actions {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 30px;
+    }
+    
+    /* Header da seção de adicionar jogo */
+    #addGame .edit-header {
+      background: linear-gradient(135deg, var(--purple-dark), var(--purple-deep));
+      border-bottom: 4px solid var(--gold);
+      padding: 25px;
+      margin: -30px -30px 30px -30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    #addGame .edit-title {
+      font-size: 22px;
+      background: linear-gradient(135deg, var(--gold), var(--pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* Animação de entrada suave */
+    #addGame.active .form-section {
+      animation: slideIn 0.5s ease-out;
+    }
+    
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Destaque para campos requeridos */
+    #addGameForm input:required,
+    #addGameForm select:required {
+      border-left: 4px solid var(--gold);
+    }
+    
+    /* Tooltip style */
+    #addGameForm [title]::after {
+      content: attr(title);
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(26, 13, 36, 0.95);
+      color: var(--gold);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 11px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      border: 2px solid var(--purple-vibrant);
+    }
+    
+    #addGameForm [title]:hover::after {
+      opacity: 1;
+    }
+    
     .section-title {
       font-family: 'Press Start 2P', cursive;
       font-size: 14px;
@@ -736,7 +1040,18 @@
         </div>
       </div>
       
-      <div class="games-grid">
+      <div class="games-grid" id="gamesGrid">
+        <!-- Card Adicionar Novo Jogo (sempre primeiro) -->
+        <div class="game-admin-card" onclick="showSection('addGame')" style="background: linear-gradient(135deg, rgba(153, 51, 255, 0.3), rgba(255, 105, 180, 0.3)); border: 3px dashed var(--gold);">
+          <div class="game-card-icon-img" style="font-size: 60px;">
+            ➕
+          </div>
+          <h3 class="game-card-title" style="color: var(--gold);">ADICIONAR JOGO</h3>
+          <p class="game-card-desc">Adicione um novo jogo ao site</p>
+          <button class="game-card-btn" style="background: linear-gradient(135deg, var(--gold), var(--gold-amber)); color: var(--purple-dark); border-color: var(--gold);">✨ Novo Jogo</button>
+        </div>
+        
+        <!-- Jogos hardcoded como fallback (serão substituídos por dinâmicos) -->
         <div class="game-admin-card" onclick="editGame('mir4')">
           <div class="game-card-icon-img">
             <img src="https://i.imgur.com/XrXphs0.png" alt="MIR4">
@@ -781,6 +1096,376 @@
           <p class="game-card-desc">Preços por faixa de quantidade</p>
           <button class="game-card-btn">Editar Preços</button>
         </div>
+        
+        <div class="game-admin-card" onclick="editGame('raven2')">
+          <div class="game-card-icon-img">
+            <img src="https://i.imgur.com/jgNSgdY.png" alt="RAVEN II">
+          </div>
+          <h3 class="game-card-title">RAVEN II</h3>
+          <p class="game-card-desc">Sistema de pacotes</p>
+          <button class="game-card-btn">Editar Preços</button>
+        </div>
+        
+        <div class="game-admin-card" onclick="editGame('rohan2')">
+          <div class="game-card-icon-img">
+            <img src="https://i.imgur.com/nZg3UYE.png" alt="ROHAN II">
+          </div>
+          <h3 class="game-card-title">ROHAN II</h3>
+          <p class="game-card-desc">Sistema de pacotes</p>
+          <button class="game-card-btn">Editar Preços</button>
+        </div>
+        
+        <div class="game-admin-card" onclick="editGame('genshin')">
+          <div class="game-card-icon-img">
+            <img src="https://i.imgur.com/Q1T1tta.png" alt="GENSHIN IMPACT">
+          </div>
+          <h3 class="game-card-title">GENSHIN IMPACT</h3>
+          <p class="game-card-desc">Genesis Crystals</p>
+          <button class="game-card-btn">Editar Preços</button>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ADD GAME Section -->
+    <section id="addGame" class="admin-section">
+      <div class="edit-container">
+        <div class="edit-header">
+          <h2 class="edit-title">➕ Adicionar Novo Jogo - Sistema Completo</h2>
+          <button class="back-btn" onclick="showSection('home')">← Voltar</button>
+        </div>
+        
+        <!-- Info Box -->
+        <div style="background: linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(153, 51, 255, 0.15)); border: 3px solid var(--success); border-radius: 15px; padding: 20px; margin-bottom: 30px; box-shadow: 0 8px 25px rgba(0, 255, 136, 0.2);">
+          <h3 style="color: var(--success); margin-bottom: 15px; font-size: 16px; display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 24px;">✅</span>
+            SALVAMENTO AUTOMÁTICO ATIVADO!
+          </h3>
+          <p style="color: var(--text-color); font-size: 13px; line-height: 1.8; margin-bottom: 10px;">
+            🚀 Quando você clicar em <strong style="color: var(--gold);">"💾 Salvar Tudo"</strong>, o sistema vai:
+          </p>
+          <ul style="color: var(--pink); font-size: 12px; line-height: 2; padding-left: 20px;">
+            <li>📝 Adicionar o jogo ao <strong>config.js</strong> automaticamente</li>
+            <li>📁 Criar a pasta <strong>${gameId}/</strong> automaticamente</li>
+            <li>💰 Salvar <strong>config-precos.js</strong> automaticamente</li>
+            <li>📄 Salvar <strong>index.html</strong> automaticamente</li>
+          </ul>
+          <p style="color: var(--gold); font-size: 12px; margin-top: 15px; font-weight: 600;">
+            💡 Certifique-se de clicar em "Connect Folder" no header antes de salvar!
+          </p>
+        </div>
+        
+        <form id="addGameForm">
+          <!-- Informações Básicas -->
+          <div class="form-section">
+            <h3 class="section-title">
+              <span class="section-icon">🎮</span>
+              Informações Básicas do Jogo
+            </h3>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="gameId">ID do Jogo (sem espaços, minúsculas)</label>
+                <input type="text" id="gameId" placeholder="ex: novogame" required>
+                <small>Usado para o nome da pasta e identificação interna</small>
+              </div>
+              
+              <div class="form-group">
+                <label for="gameName">Nome do Jogo</label>
+                <input type="text" id="gameName" placeholder="ex: NOVO GAME" required>
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="gameNameShort">Nome Curto (opcional)</label>
+                <input type="text" id="gameNameShort" placeholder="ex: NOVO">
+                <small>Deixe vazio para usar o nome completo</small>
+              </div>
+              
+              <div class="form-group">
+                <label for="gameEmoji">Emoji do Jogo</label>
+                <input type="text" id="gameEmoji" placeholder="🎮" required maxlength="2">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="gameIcon">URL do Ícone (Imgur)</label>
+              <input type="url" id="gameIcon" placeholder="https://i.imgur.com/..." required>
+            </div>
+            
+            <div class="form-group">
+              <label>
+                <input type="checkbox" id="gameIconLarge" style="width: auto; margin-right: 10px;">
+                Ícone Grande (50% maior)
+              </label>
+            </div>
+          </div>
+          
+          <!-- Descrições -->
+          <div class="form-section">
+            <h3 class="section-title">
+              <span class="section-icon">📝</span>
+              Descrições
+            </h3>
+            
+            <div class="form-group">
+              <label for="gameDescShort">Descrição Curta (para cards na home)</label>
+              <input type="text" id="gameDescShort" placeholder="ex: Compra de Diamantes Rápida" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="gameDescLong">Descrição Longa (para página de jogos)</label>
+              <input type="text" id="gameDescLong" placeholder="ex: O melhor serviço de compras para o jogo!" required>
+            </div>
+          </div>
+          
+          <!-- Features -->
+          <div class="form-section">
+            <h3 class="section-title">
+              <span class="section-icon">⭐</span>
+              Características (5 itens)
+            </h3>
+            
+            <div class="form-group">
+              <label for="feature1">Feature 1</label>
+              <input type="text" id="feature1" placeholder="ex: Entrega Rápida" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="feature2">Feature 2</label>
+              <input type="text" id="feature2" placeholder="ex: Preços Competitivos" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="feature3">Feature 3</label>
+              <input type="text" id="feature3" placeholder="ex: Suporte 24/7" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="feature4">Feature 4</label>
+              <input type="text" id="feature4" placeholder="ex: Sistema Seguro" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="feature5">Feature 5</label>
+              <input type="text" id="feature5" placeholder="ex: Entrega Garantida" required>
+            </div>
+          </div>
+          
+          <!-- SISTEMA DE PREÇOS -->
+          <div class="form-section" style="border: 3px solid var(--gold); background: rgba(255, 215, 0, 0.05);">
+            <h3 class="section-title" style="color: var(--gold);">
+              <span class="section-icon">💰</span>
+              Sistema de Preços - Escolha o Tipo
+            </h3>
+            
+            <div class="form-group">
+              <label>Tipo de Sistema de Preços:</label>
+              <select id="priceSystemType" onchange="updatePriceSystemVisibility()" style="padding: 12px; font-size: 14px;">
+                <option value="">Selecione...</option>
+                <option value="currency">💎 Sistema de Moeda/Gold (preços por faixa)</option>
+                <option value="packages">📦 Sistema de Pacotes (valores fixos em $)</option>
+                <option value="both">🎁 Ambos (Moeda + Pacotes)</option>
+              </select>
+            </div>
+          </div>
+          
+          <!-- Sistema de Moeda/Gold -->
+          <div class="form-section" id="currencySystem" style="display: none; border: 2px solid var(--purple-vibrant);">
+            <h3 class="section-title">
+              <span class="section-icon">💎</span>
+              Configuração de Moeda/Gold
+            </h3>
+            
+            <div class="form-group">
+              <label for="currencyName">Nome da Moeda</label>
+              <input type="text" id="currencyName" placeholder="ex: Gold, Diamonds, Moedas">
+              <small>Ex: Gold, Diamonds, Crystals, etc.</small>
+            </div>
+            
+            <div class="form-group">
+              <label for="currencyUnit">Unidade de Medida</label>
+              <input type="text" id="currencyUnit" placeholder="ex: k (para 1k, 5k, 10k)">
+              <small>Ex: k, M, ou deixe vazio para quantidade exata</small>
+            </div>
+            
+            <h4 style="color: var(--gold); margin: 20px 0 15px;">Faixas de Preço:</h4>
+            <div id="currencyTiersContainer">
+              <div class="currency-tier">
+                <h5 style="color: var(--pink);">Faixa 1 (Base)</h5>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Quantidade Mínima</label>
+                    <input type="number" class="tier-min" placeholder="0" value="0">
+                  </div>
+                  <div class="form-group">
+                    <label>Quantidade Máxima</label>
+                    <input type="number" class="tier-max" placeholder="5000">
+                  </div>
+                  <div class="form-group">
+                    <label>Preço por unidade (R$)</label>
+                    <input type="number" step="0.01" class="tier-price" placeholder="27.00">
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <button type="button" class="action-btn" onclick="addCurrencyTier()" style="background: var(--purple-vibrant); margin-top: 15px;">
+              <span>➕ Adicionar Nova Faixa</span>
+            </button>
+            
+            <div class="form-group" style="margin-top: 20px;">
+              <label>
+                <input type="checkbox" id="currencyHasUSDT" style="width: auto; margin-right: 10px;">
+                Tem conversão USDT?
+              </label>
+            </div>
+            
+            <div class="form-group" id="usdtPriceGroup" style="display: none;">
+              <label for="currencyUSDTPrice">Preço em USDT por unidade</label>
+              <input type="number" step="0.01" id="currencyUSDTPrice" placeholder="4.20">
+            </div>
+          </div>
+          
+          <!-- Sistema de Pacotes -->
+          <div class="form-section" id="packagesSystem" style="display: none; border: 2px solid var(--hot-pink);">
+            <h3 class="section-title">
+              <span class="section-icon">📦</span>
+              Configuração de Pacotes
+            </h3>
+            
+            <div class="form-group">
+              <label for="packageCurrency">Nome dos Pacotes</label>
+              <input type="text" id="packageCurrency" placeholder="ex: Diamonds, Crystals, Packs">
+            </div>
+            
+            <h4 style="color: var(--gold); margin: 20px 0 15px;">Pacotes Disponíveis:</h4>
+            <small style="color: var(--pink); display: block; margin-bottom: 15px;">
+              💡 O preço em R$ será calculado automaticamente pela API Binance com base no preço final em $.
+            </small>
+            <div id="packagesContainer">
+              <div class="package-item">
+                <h5 style="color: var(--pink);">Pacote 1</h5>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Valor Original ($)</label>
+                    <input type="number" step="0.01" class="pkg-original" placeholder="7.00">
+                    <small>Ex: $7, $15, $30</small>
+                  </div>
+                  <div class="form-group">
+                    <label>Preço com Desconto ($)</label>
+                    <input type="number" step="0.01" class="pkg-discounted" placeholder="6.30" required>
+                    <small>Ex: $6.30, $13.50, $26.00</small>
+                  </div>
+                  <div class="form-group">
+                    <label>Quantidade de itens (opcional)</label>
+                    <input type="number" class="pkg-quantity" placeholder="500">
+                    <small>Ex: 500 Diamonds</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <button type="button" class="action-btn" onclick="addPackage()" style="background: var(--hot-pink); margin-top: 15px;">
+              <span>➕ Adicionar Novo Pacote</span>
+            </button>
+          </div>
+          
+          <!-- Caminho da Página -->
+          <div class="form-section">
+            <h3 class="section-title">
+              <span class="section-icon">🔗</span>
+              Caminho da Página do Jogo
+            </h3>
+            
+            <div class="form-group">
+              <label for="gameUrl">URL do iframe (caminho relativo)</label>
+              <input type="text" id="gameUrl" placeholder="NomeDoJogo/index.html" required>
+              <small>O caminho será automaticamente gerado como: <strong>[ID do jogo]/index.html</strong></small>
+            </div>
+          </div>
+          
+          <!-- Campos da Conta -->
+          <div class="form-section" style="border: 2px solid var(--hot-pink);">
+            <h3 class="section-title">
+              <span class="section-icon">📋</span>
+              Campos de Informações da Conta
+            </h3>
+            
+            <div style="background: linear-gradient(135deg, rgba(255, 20, 147, 0.15), rgba(153, 51, 255, 0.15)); border: 2px solid var(--hot-pink); border-radius: 10px; padding: 15px; margin-bottom: 20px;">
+              <p style="color: var(--hot-pink); font-size: 11px; margin-bottom: 10px; font-weight: 600;">
+                💡 Configure quais informações serão solicitadas
+              </p>
+              <p style="color: var(--text-color); font-size: 10px; line-height: 1.8;">
+                Exemplos: Login, Senha, ID da Conta, Email, Servidor, Personagem, etc.
+              </p>
+            </div>
+            
+            <div id="accountFieldsContainer">
+              <div class="account-field-item">
+                <h5 style="color: var(--hot-pink); margin-bottom: 10px;">Campo 1</h5>
+                <div class="form-group">
+                  <label>Nome do Campo</label>
+                  <input type="text" class="field-name" placeholder="Ex: Login" value="Login">
+                  <small>O que será solicitado (ex: Login, Senha, ID)</small>
+                </div>
+                <div class="form-group">
+                  <label>Placeholder (texto de exemplo)</label>
+                  <input type="text" class="field-placeholder" placeholder="Ex: Digite seu login">
+                  <small>Texto que aparece dentro do campo vazio</small>
+                </div>
+              </div>
+            </div>
+            
+            <button type="button" class="action-btn" onclick="addAccountField()" style="background: var(--hot-pink); margin-top: 15px;">
+              <span>➕ Adicionar Novo Campo</span>
+            </button>
+          </div>
+          
+          <!-- Configurações Gerais de Preço -->
+          <div class="form-section" style="border: 2px solid var(--gold);">
+            <h3 class="section-title">
+              <span class="section-icon">💱</span>
+              Configurações Gerais
+            </h3>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="defaultExchangeRate">Cotação Padrão do Dólar (R$)</label>
+                <input type="number" step="0.01" id="defaultExchangeRate" placeholder="5.88" value="5.88">
+                <small>Será atualizado pela API em tempo real</small>
+              </div>
+              
+              <div class="form-group">
+                <label for="cardFee">Taxa do Cartão (%)</label>
+                <input type="number" step="0.01" id="cardFee" placeholder="6" value="6">
+                <small>Ex: 6 para 6%</small>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Botões -->
+          <div class="form-actions" style="gap: 15px; flex-wrap: wrap;">
+            <button type="button" class="action-btn preview-btn" onclick="previewNewGameComplete()">
+              <span>👁️ Visualizar Config.js</span>
+            </button>
+            <button type="button" class="action-btn" onclick="previewConfigPrecos()" style="background: var(--gold); color: var(--purple-dark);">
+              <span>💰 Visualizar config-precos.js</span>
+            </button>
+            <button type="button" class="action-btn" onclick="previewGameHTML()" style="background: var(--hot-pink);">
+              <span>📄 Visualizar HTML</span>
+            </button>
+            <button type="button" class="action-btn save-btn" onclick="saveCompleteGame()">
+              <span>💾 Salvar Tudo</span>
+            </button>
+            <button type="button" class="action-btn" onclick="copyAllCode()" style="background: var(--purple-vibrant);">
+              <span>📋 Copiar Todos os Códigos</span>
+            </button>
+            <button type="button" class="action-btn danger-btn" onclick="resetAddGameForm()">
+              <span>🔄 Limpar Formulário</span>
+            </button>
+          </div>
+        </form>
       </div>
     </section>
     
@@ -1378,6 +2063,316 @@
         <button class="action-btn action-btn-primary" onclick="saveConfig('wemix')">
           💾 Salvar & Baixar
         </button>
+      </div>
+    </section>
+    
+    <!-- RAVEN 2 Section -->
+    <section id="raven2" class="admin-section">
+      <div class="edit-container">
+        <div class="edit-header">
+          <h2 class="edit-title">✝︎ RAVEN II - Configurações</h2>
+          <button class="back-btn" onclick="showSection('home')">← Voltar</button>
+        </div>
+        
+        <form id="raven2Form">
+          <!-- Cotação e Taxas -->
+          <div class="form-section">
+            <h3 class="section-title">
+              <span class="section-icon">💱</span>
+              Cotação e Taxas
+            </h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">Cotação do Dólar (R$)</label>
+                <input type="number" step="0.01" class="form-input" name="defaultExchangeRate" value="5.88">
+                <span class="form-helper">Valor padrão do dólar em reais</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Taxa do Cartão (%)</label>
+                <input type="number" step="0.01" class="form-input" name="cardFeePercentage" value="6">
+                <span class="form-helper">Porcentagem adicional para cartão</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Pacotes -->
+          <div class="form-section">
+            <h3 class="section-title">
+              <span class="section-icon">💎</span>
+              Pacotes de Top Up
+            </h3>
+            <p style="color: var(--purple-light); font-size: 12px; margin-bottom: 20px;">
+              ⚠️ Os preços finais em R$ serão calculados pela API Binance em tempo real no site.
+            </p>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">Pack $3 - Preço Original ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg3_original" value="3">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Pack $3 - Preço da Loja ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg3_final" value="2.70">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Pack $4 - Preço Original ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg4_original" value="4">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Pack $4 - Preço da Loja ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg4_final" value="3.60">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Pack $7 - Preço Original ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg7_original" value="7">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Pack $7 - Preço da Loja ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg7_final" value="6.30">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Pack $22 - Preço Original ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg22_original" value="22">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Pack $22 - Preço da Loja ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg22_final" value="19.80">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Pack $36 - Preço Original ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg36_original" value="36">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Pack $36 - Preço da Loja ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg36_final" value="32.40">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Pack $70 - Preço Original ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg70_original" value="70">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Pack $70 - Preço da Loja ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg70_final" value="63.00">
+              </div>
+            </div>
+          </div>
+          
+          <!-- Botões de Ação -->
+          <div class="action-bar">
+            <button type="button" class="action-btn action-btn-primary" onclick="saveConfig('raven2')">
+              💾 Salvar Configurações
+            </button>
+            <button type="button" class="action-btn action-btn-secondary" onclick="resetForm('raven2')">
+              🔄 Resetar para Padrão
+            </button>
+            <button type="button" class="action-btn action-btn-success" onclick="previewConfig('raven2')">
+              👁️ Preview do Código
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+    
+    <!-- ROHAN 2 Section -->
+    <section id="rohan2" class="admin-section">
+      <div class="edit-container">
+        <div class="edit-header">
+          <h2 class="edit-title">✳︎ ROHAN II - Configurações</h2>
+          <button class="back-btn" onclick="showSection('home')">← Voltar</button>
+        </div>
+        
+        <form id="rohan2Form">
+          <!-- Cotação e Taxas -->
+          <div class="form-section">
+            <h3 class="section-title">
+              <span class="section-icon">💱</span>
+              Cotação e Taxas
+            </h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">Cotação do Dólar (R$)</label>
+                <input type="number" step="0.01" class="form-input" name="defaultExchangeRate" value="5.88">
+                <span class="form-helper">Valor padrão do dólar em reais</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Taxa do Cartão (%)</label>
+                <input type="number" step="0.01" class="form-input" name="cardFeePercentage" value="6">
+                <span class="form-helper">Porcentagem adicional para cartão</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Pacotes -->
+          <div class="form-section">
+            <h3 class="section-title">
+              <span class="section-icon">💎</span>
+              Pacotes de Top Up
+            </h3>
+            <p style="color: var(--purple-light); font-size: 12px; margin-bottom: 20px;">
+              ⚠️ Os preços finais em R$ serão calculados pela API Binance em tempo real no site.
+            </p>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">Pack $10 - Preço Original ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg10_original" value="10">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Pack $10 - Preço da Loja ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg10_final" value="8.50">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Pack $12 - Preço Original ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg12_original" value="12">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Pack $12 - Preço da Loja ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg12_final" value="9.99">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Pack $20 - Preço Original ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg20_original" value="20">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Pack $20 - Preço da Loja ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg20_final" value="17.00">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Pack $50 - Preço Original ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg50_original" value="50">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Pack $50 - Preço da Loja ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg50_final" value="42.50">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Pack $100 - Preço Original ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg100_original" value="100">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Pack $100 - Preço da Loja ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg100_final" value="85.00">
+              </div>
+            </div>
+          </div>
+          
+          <!-- Botões de Ação -->
+          <div class="action-bar">
+            <button type="button" class="action-btn action-btn-primary" onclick="saveConfig('rohan2')">
+              💾 Salvar Configurações
+            </button>
+            <button type="button" class="action-btn action-btn-secondary" onclick="resetForm('rohan2')">
+              🔄 Resetar para Padrão
+            </button>
+            <button type="button" class="action-btn action-btn-success" onclick="previewConfig('rohan2')">
+              👁️ Preview do Código
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+    
+    <!-- GENSHIN IMPACT Section -->
+    <section id="genshin" class="admin-section">
+      <div class="edit-container">
+        <div class="edit-header">
+          <h2 class="edit-title">⚔️ GENSHIN IMPACT - Configurações</h2>
+          <button class="back-btn" onclick="showSection('home')">← Voltar</button>
+        </div>
+        
+        <form id="genshinForm">
+          <!-- Cotação e Taxas -->
+          <div class="form-section">
+            <h3 class="section-title">
+              <span class="section-icon">💱</span>
+              Cotação e Taxas
+            </h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">Cotação do Dólar (R$)</label>
+                <input type="number" step="0.01" class="form-input" name="defaultExchangeRate" value="5.88">
+                <span class="form-helper">Valor padrão do dólar em reais</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Taxa do Cartão (%)</label>
+                <input type="number" step="0.01" class="form-input" name="cardFeePercentage" value="6">
+                <span class="form-helper">Porcentagem adicional para cartão</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Pacotes Genesis Crystals -->
+          <div class="form-section">
+            <h3 class="section-title">
+              <span class="section-icon">💎</span>
+              Pacotes de Genesis Crystals
+            </h3>
+            <p style="color: var(--purple-light); font-size: 12px; margin-bottom: 20px;">
+              ⚠️ Os preços finais em R$ serão calculados pela API Binance em tempo real no site.
+            </p>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">Benção da Lua - Preço Original ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg1_original" value="4.99">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Benção da Lua - Preço da Loja ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg1_final" value="4.20">
+              </div>
+              <div class="form-group">
+                <label class="form-label">300+30 Crystals - Preço Original ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg2_original" value="4.99">
+              </div>
+              <div class="form-group">
+                <label class="form-label">300+30 Crystals - Preço da Loja ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg2_final" value="4.20">
+              </div>
+              <div class="form-group">
+                <label class="form-label">980+110 Crystals - Preço Original ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg3_original" value="14.99">
+              </div>
+              <div class="form-group">
+                <label class="form-label">980+110 Crystals - Preço da Loja ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg3_final" value="13.50">
+              </div>
+              <div class="form-group">
+                <label class="form-label">1980+260 Crystals - Preço Original ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg4_original" value="29.99">
+              </div>
+              <div class="form-group">
+                <label class="form-label">1980+260 Crystals - Preço da Loja ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg4_final" value="26.00">
+              </div>
+              <div class="form-group">
+                <label class="form-label">3200+600 Crystals - Preço Original ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg5_original" value="49.99">
+              </div>
+              <div class="form-group">
+                <label class="form-label">3200+600 Crystals - Preço da Loja ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg5_final" value="40.00">
+              </div>
+              <div class="form-group">
+                <label class="form-label">6400+1600 Crystals - Preço Original ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg6_original" value="99.99">
+              </div>
+              <div class="form-group">
+                <label class="form-label">6400+1600 Crystals - Preço da Loja ($)</label>
+                <input type="number" step="0.01" class="form-input" name="pkg6_final" value="76.00">
+              </div>
+            </div>
+          </div>
+          
+          <!-- Botões de Ação -->
+          <div class="action-bar">
+            <button type="button" class="action-btn action-btn-primary" onclick="saveConfig('genshin')">
+              💾 Salvar Configurações
+            </button>
+            <button type="button" class="action-btn action-btn-secondary" onclick="resetForm('genshin')">
+              🔄 Resetar para Padrão
+            </button>
+            <button type="button" class="action-btn action-btn-success" onclick="previewConfig('genshin')">
+              👁️ Preview do Código
+            </button>
+          </div>
+        </form>
       </div>
     </section>
     

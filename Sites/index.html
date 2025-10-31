@@ -253,14 +253,15 @@
     
     .hero-cta {
       display: inline-block;
-      padding: 15px 30px;
+      padding: 20px 40px;
       background: linear-gradient(135deg, var(--purple-vibrant) 0%, var(--magenta) 100%);
       border: 4px solid var(--gold);
       color: var(--text-color);
-      font-size: 10px;
+      font-size: 12px;
       cursor: pointer;
       box-shadow: 6px 6px 0 rgba(0,0,0,0.5);
       margin: 10px;
+      font-weight: bold;
     }
     
     .hero-cta:hover {
@@ -515,6 +516,14 @@
       filter: drop-shadow(0 0 15px var(--purple-vibrant));
     }
     
+    /* Ícones de imagem nas redes sociais */
+    .social-icon-large img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 15px var(--purple-vibrant));
+    }
+    
     .social-card h3 {
       font-size: 14px;
       color: var(--gold);
@@ -549,7 +558,7 @@
     .game-frame-container {
       width: 100%;
       height: calc(100vh - 80px);
-      background: white;
+      background: transparent;
       border: 5px solid var(--gold);
       box-shadow: 0 0 30px rgba(153, 51, 255, 0.8);
       overflow: hidden;
@@ -561,6 +570,7 @@
       border: none;
       transform: scale(0.98);
       transform-origin: top center;
+      background: transparent;
     }
     
     /* ===== FOOTER ===== */
@@ -622,6 +632,74 @@
       display: none !important;
     }
     
+    /* ===== DISCORD BUTTON FIXO ===== */
+    .discord-fixed {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, #5865F2 0%, #7289DA 100%);
+      border: 4px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 9999;
+      box-shadow: 0 8px 25px rgba(88, 101, 242, 0.6), 0 0 30px rgba(255, 215, 0, 0.4);
+      transition: all 0.3s ease;
+      animation: discordPulse 3s ease-in-out infinite;
+    }
+    
+    .discord-fixed img {
+      width: 45px;
+      height: 45px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+    }
+    
+    .discord-fixed:hover {
+      transform: scale(1.15) rotate(5deg);
+      box-shadow: 0 12px 35px rgba(88, 101, 242, 0.8), 0 0 50px var(--gold);
+      border-color: var(--purple-vibrant);
+    }
+    
+    @keyframes discordPulse {
+      0%, 100% { 
+        transform: scale(1);
+        box-shadow: 0 8px 25px rgba(88, 101, 242, 0.6), 0 0 30px rgba(255, 215, 0, 0.4);
+      }
+      50% { 
+        transform: scale(1.08);
+        box-shadow: 0 12px 35px rgba(88, 101, 242, 0.9), 0 0 50px rgba(255, 215, 0, 0.7);
+      }
+    }
+    
+    /* Tooltip do Discord */
+    .discord-fixed::before {
+      content: 'Junte-se ao Discord!';
+      position: absolute;
+      right: 85px;
+      background: rgba(88, 101, 242, 0.95);
+      color: white;
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      border: 2px solid var(--gold);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+    
+    .discord-fixed:hover::before {
+      opacity: 1;
+      right: 90px;
+    }
+    
     /* ===== PARTICLES (DISABLED) ===== */
     .particles-container {
       display: none;
@@ -640,6 +718,23 @@
       .home-button { top: 70px; right: 10px; padding: 10px 15px; font-size: 8px; }
       .star-gif { width: 100px; bottom: 10px; right: 10px; }
       .game-frame-container { height: calc(100vh - 60px); }
+      
+      /* Discord fixo mobile */
+      .discord-fixed {
+        width: 60px;
+        height: 60px;
+        bottom: 20px;
+        right: 20px;
+      }
+      
+      .discord-fixed img {
+        width: 35px;
+        height: 35px;
+      }
+      
+      .discord-fixed::before {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -675,7 +770,7 @@
         <div class="hero-logo">⭐💎⭐</div>
         <h1>DAOSHI STORE</h1>
         <p class="hero-tagline">✨ A Loja Premium de Games que Você Confia ✨</p>
-        <p class="hero-subtitle">🎮 5 Jogos • Melhores Preços • Entrega Instantânea • Suporte 24/7 🚀</p>
+        <p class="hero-subtitle" id="heroSubtitle">🎮 5 Jogos • Melhores Preços • Entrega Instantânea • Suporte 24/7 🚀</p>
         <button class="hero-cta" onclick="showSection('games')">🎮 VER JOGOS</button>
         <button class="hero-cta" onclick="showSection('contact')">💬 FALE CONOSCO</button>
       </div>
@@ -922,6 +1017,24 @@
     </div>
   </div>
 
+  <div class="section" id="raven2">
+    <div class="game-frame-container">
+      <iframe src="raven2/index.html"></iframe>
+    </div>
+  </div>
+
+  <div class="section" id="rohan2">
+    <div class="game-frame-container">
+      <iframe src="rohan2/index.html"></iframe>
+    </div>
+  </div>
+
+  <div class="section" id="genshin">
+    <div class="game-frame-container">
+      <iframe src="genshin/index.html"></iframe>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer>
     <div class="footer-content">
@@ -959,6 +1072,11 @@
 
   <!-- Decorative GIF -->
   <img src="https://media.giphy.com/media/bzawYMvJVw0KPA0u7M/giphy.gif" alt="Star Butterfly" class="star-gif">
+  
+  <!-- Discord Button Fixo -->
+  <a href="https://discord.gg/daoshi" target="_blank" class="discord-fixed" title="Junte-se ao Discord!">
+    <img src="https://i.imgur.com/7Dmdj3I.png" alt="Discord">
+  </a>
 
   <script>
     // ===== CARREGAMENTO DINÂMICO DO CONTEÚDO =====
@@ -977,21 +1095,28 @@
       const navLogo = document.querySelector('.nav-logo');
       if (navLogo) navLogo.innerHTML = `⭐ ${config.loja.nome} ⭐`;
       
-      // Atualizar hero section
+      // Atualizar hero section (com contagem automática de jogos)
       document.querySelector('.hero-logo').textContent = config.loja.logo;
       document.querySelector('.hero h1').textContent = config.loja.nome;
       document.querySelector('.hero-tagline').textContent = config.loja.tagline;
-      document.querySelector('.hero-subtitle').textContent = config.loja.subtitle;
       
-      // Atualizar estatísticas
+      // Substituir número de jogos no subtitle dinamicamente
+      const subtitleComJogos = config.loja.subtitle.replace(/\d+\s+Jogos?/gi, `${config.jogos.length} Jogos`);
+      document.querySelector('.hero-subtitle').textContent = subtitleComJogos;
+      
+      // Atualizar estatísticas (contagem de jogos automática)
       const statsBar = document.querySelector('.stats-bar');
       if (statsBar) {
-        statsBar.innerHTML = config.stats.map(stat => `
-          <div class="stat-item">
-            <div class="stat-number">${stat.numero}</div>
-            <div class="stat-label">${stat.label}</div>
-          </div>
-        `).join('');
+        statsBar.innerHTML = config.stats.map(stat => {
+          // Se for estatística de jogos, conta automaticamente
+          const numero = stat.label.includes('Jogos') ? config.jogos.length : stat.numero;
+          return `
+            <div class="stat-item">
+              <div class="stat-number">${numero}</div>
+              <div class="stat-label">${stat.label}</div>
+            </div>
+          `;
+        }).join('');
       }
       
       // Atualizar cards de jogos (preview na home)
@@ -1050,16 +1175,23 @@
       // Atualizar redes sociais
       const socialGrid = document.querySelector('.social-grid');
       if (socialGrid) {
-        socialGrid.innerHTML = config.social.map(social => `
-          <div class="social-card">
-            <div class="social-icon-large">${social.icone}</div>
-            <h3>${social.nome}</h3>
-            <p>${social.descricao}</p>
-            <a href="${social.url}" target="_blank" class="social-link">
-              ${social.textoBotao}
-            </a>
-          </div>
-        `).join('');
+        socialGrid.innerHTML = config.social.map(social => {
+          // Verificar se o ícone é URL ou emoji
+          const iconeHTML = social.icone.startsWith('http') 
+            ? `<img src="${social.icone}" alt="${social.nome}">`
+            : social.icone;
+          
+          return `
+            <div class="social-card">
+              <div class="social-icon-large">${iconeHTML}</div>
+              <h3>${social.nome}</h3>
+              <p>${social.descricao}</p>
+              <a href="${social.url}" target="_blank" class="social-link">
+                ${social.textoBotao}
+              </a>
+            </div>
+          `;
+        }).join('');
       }
       
       // Atualizar footer

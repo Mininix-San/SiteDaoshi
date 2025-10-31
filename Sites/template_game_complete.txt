@@ -1,0 +1,4 @@
+TEMPLATE HTML COMPLETO - Será usado pelo dashboard para gerar jogos automaticamente
+
+Este arquivo é uma referência do que será inserido no dashboard.js
+

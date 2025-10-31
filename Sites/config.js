@@ -9,16 +9,16 @@ const SITE_CONFIG = {
     nome: "DAOSHI STORE",
     logo: "⭐💎⭐",
     tagline: "✨ A Loja Premium de Games que Você Confia ✨",
-    subtitle: "🎮 5 Jogos • Melhores Preços • Entrega Instantânea • Suporte 24/7 🚀",
+    subtitle: "🎮 8 Jogos • Melhores Preços • Entrega Instantânea • Suporte 24/7 🚀",
     descricao: "A DAOSHI STORE é a sua loja premium de confiança para serviços de games. Com anos de experiência no mercado, oferecemos as melhores soluções para jogadores que buscam qualidade, segurança e preços justos.",
     missao: "Trabalhamos com os principais jogos do momento, oferecendo Gold, Diamonds, Top Up e muito mais. Nossa missão é proporcionar a melhor experiência de compra para a comunidade gamer."
   },
 
   // ===== ESTATÍSTICAS =====
   stats: [
-    { numero: "5.000+", label: "Clientes Satisfeitos" },
-    { numero: "50.000+", label: "Transações Realizadas" },
-    { numero: "5", label: "Jogos Disponíveis" },
+    { numero: "10.000+", label: "Clientes Satisfeitos" },
+    { numero: "100.000+", label: "Transações Realizadas" },
+    { numero: "auto", label: "Jogos Disponíveis" }, // "auto" = conta automaticamente
     { numero: "24/7", label: "Suporte Online" }
   ],
 
@@ -28,7 +28,7 @@ const SITE_CONFIG = {
       id: "mir4",
       nome: "MIR4",
       icone: "https://i.imgur.com/XrXphs0.png",
-      iconeGrande: true, // Define se o ícone é maior
+      iconeGrande: true,
       emoji: "⚔️",
       descricaoCurta: "Gold, Top Up e Serviços Premium",
       descricaoLonga: "O melhor serviço de Gold e Top Up para MIR4!",
@@ -39,6 +39,57 @@ const SITE_CONFIG = {
         "Múltiplas Formas de Pagamento",
         "Entrega Instantânea",
         "Suporte Dedicado"
+      ]
+    },
+    {
+      id: "raven2",
+      nome: "Raven II",
+      icone: "https://i.imgur.com/jgNSgdY.png",
+      iconeGrande: false,
+      emoji: "✝︎",
+      descricaoCurta: "RAVEN II",
+      descricaoLonga: "Venha comprar packs para sua conta ^^",
+      url: "raven2/index.html",
+      features: [
+        "Entrega Rápida",
+        "Suporte 24/7",
+        "100% Seguro",
+        "Entrega Garantida",
+        "Melhor valor do mercado"
+      ]
+    },
+    {
+      id: "rohan2",
+      nome: "Rohan II",
+      icone: "https://i.imgur.com/nZg3UYE.png",
+      iconeGrande: false,
+      emoji: "✳︎",
+      descricaoCurta: "ROHAN II",
+      descricaoLonga: "Venha comprar packs pra sua conta ^^",
+      url: "rohan2/index.html",
+      features: [
+        "Entrega Rápida",
+        "Suporte 24/7",
+        "100% Seguro",
+        "Entrega Garantida",
+        "Melhor preço do mercado"
+      ]
+    },
+    {
+      id: "genshin",
+      nome: "Genshin Impact",
+      icone: "https://i.imgur.com/Q1T1tta.png",
+      iconeGrande: false,
+      emoji: "⚔️",
+      descricaoCurta: "GENSHIN IMPACT",
+      descricaoLonga: "Genesis Crystals e Benção da Lua com os melhores preços!",
+      url: "genshin/index.html",
+      features: [
+        "Entrega Instantânea",
+        "Suporte 24/7",
+        "100% Seguro",
+        "Melhor Preço",
+        "Genesis Crystals"
       ]
     },
     {
@@ -150,21 +201,21 @@ const SITE_CONFIG = {
   social: [
     {
       nome: "Discord",
-      icone: "💬",
+      icone: "https://i.imgur.com/7Dmdj3I.png",
       descricao: "Junte-se à nossa comunidade no Discord! Suporte 24/7, promoções exclusivas e muito mais!",
       url: "https://discord.gg/daoshi",
       textoBotao: "Entrar no Discord"
     },
     {
       nome: "Instagram",
-      icone: "📸",
+      icone: "https://i.imgur.com/hfAONeB.png",
       descricao: "Siga-nos no Instagram para novidades, promoções e atualizações sobre os jogos!",
       url: "https://www.instagram.com/daoshi.store/",
       textoBotao: "Seguir no Instagram"
     },
     {
       nome: "Facebook",
-      icone: "📘",
+      icone: "https://i.imgur.com/cvwtPa9.png",
       descricao: "Curta nossa página no Facebook e fique por dentro de todas as novidades da loja!",
       url: "https://www.facebook.com/profile.php?id=61581292253937",
       textoBotao: "Curtir no Facebook"
