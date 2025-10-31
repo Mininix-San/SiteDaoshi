@@ -61,6 +61,28 @@ if errorlevel 1 (
     exit /b
 )
 
+REM Sincronizar com remoto primeiro
+echo.
+echo 🔄 Sincronizando com repositório remoto...
+git pull --rebase
+
+if errorlevel 1 (
+    echo.
+    echo ⚠️  Conflitos detectados ou erro ao fazer pull!
+    echo 💡 Tentando novamente sem rebase...
+    git rebase --abort 2>nul
+    git pull --no-rebase
+    
+    if errorlevel 1 (
+        echo.
+        echo ❌ Erro ao sincronizar! Você pode ter conflitos para resolver.
+        echo 💡 Execute manualmente: git pull
+        echo.
+        pause
+        exit /b
+    )
+)
+
 REM Fazer push
 echo.
 echo 🚀 Enviando para o repositório remoto...
