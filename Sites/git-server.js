@@ -73,12 +73,13 @@ const server = http.createServer(async (req, res) => {
   // Rota: Adicionar arquivos
   if (req.url === '/git/add' && req.method === 'POST') {
     try {
-      // Adicionar todos os arquivos de Sites/
-      await executeGitCommand('git add Sites/*');
+      // Adicionar APENAS Sites/ e arquivos importantes da raiz
       await executeGitCommand('git add Sites/');
-      await executeGitCommand('git add -A Sites/');
+      await executeGitCommand('git add .gitignore');
+      await executeGitCommand('git add index.html');
+      await executeGitCommand('git add README.md');
       
-      const status = await executeGitCommand('git status Sites/ --short');
+      const status = await executeGitCommand('git status --short');
       
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({ 
@@ -182,12 +183,13 @@ const server = http.createServer(async (req, res) => {
         
         // 1. Adicionar arquivos
         steps.push('📥 Adicionando arquivos...');
-        await executeGitCommand('git add Sites/*');
         await executeGitCommand('git add Sites/');
-        await executeGitCommand('git add -A Sites/');
+        await executeGitCommand('git add .gitignore');
+        await executeGitCommand('git add index.html');
+        await executeGitCommand('git add README.md');
         
         // 2. Verificar status
-        const status = await executeGitCommand('git status Sites/ --short');
+        const status = await executeGitCommand('git status --short');
         
         if (!status.stdout.trim()) {
           res.writeHead(200, { 'Content-Type': 'application/json' });

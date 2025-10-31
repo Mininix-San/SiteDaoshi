@@ -20,11 +20,12 @@ echo.
 echo ════════════════════════════════════════════════
 echo.
 
-REM Adicionar TODOS os arquivos (novos, modificados e removidos)
-echo 📥 Adicionando TODOS os arquivos de Sites/...
-git add Sites/* 
+REM Adicionar APENAS Sites/ e arquivos da raiz importantes
+echo 📥 Adicionando arquivos do projeto...
 git add Sites/
-git add -A Sites/
+git add .gitignore 2>nul
+git add index.html 2>nul
+git add README.md 2>nul
 
 REM Verificar o que será commitado
 echo.
