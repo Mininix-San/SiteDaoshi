@@ -493,48 +493,6 @@
       line-height: 1.6;
     }
     
-    /* ===== TESTIMONIALS ===== */
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-      margin-bottom: 50px;
-    }
-    
-    .testimonial-card {
-      background: rgba(45, 27, 61, 0.92);
-      border: 3px solid var(--purple-light);
-      padding: 25px;
-      box-shadow: 6px 6px 0 rgba(0,0,0,0.5);
-    }
-    
-    .testimonial-header {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 15px;
-    }
-    
-    .testimonial-avatar {
-      font-size: 40px;
-    }
-    
-    .testimonial-info h4 {
-      font-size: 10px;
-      color: var(--gold);
-      margin-bottom: 5px;
-    }
-    
-    .testimonial-rating {
-      font-size: 12px;
-      color: var(--gold);
-    }
-    
-    .testimonial-text {
-      font-size: 8px;
-      line-height: 1.8;
-      color: var(--text-color);
-    }
     
     /* ===== CONTACT/SOCIAL ===== */
     .social-grid {
@@ -594,12 +552,15 @@
       background: white;
       border: 5px solid var(--gold);
       box-shadow: 0 0 30px rgba(153, 51, 255, 0.8);
+      overflow: hidden;
     }
     
     .game-frame-container iframe {
       width: 100%;
       height: 100%;
       border: none;
+      transform: scale(0.98);
+      transform-origin: top center;
     }
     
     /* ===== FOOTER ===== */
@@ -774,40 +735,6 @@
         </div>
       </div>
 
-      <!-- Testimonials -->
-      <h2 class="section-title">⭐ DEPOIMENTOS ⭐</h2>
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <div class="testimonial-header">
-            <div class="testimonial-avatar">👤</div>
-            <div class="testimonial-info">
-              <h4>João Silva</h4>
-              <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
-            </div>
-          </div>
-          <p class="testimonial-text">"Melhor loja de games! Comprei gold no MIR4 e recebi na hora. Suporte excelente!"</p>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-header">
-            <div class="testimonial-avatar">👤</div>
-            <div class="testimonial-info">
-              <h4>Maria Santos</h4>
-              <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
-            </div>
-          </div>
-          <p class="testimonial-text">"Preços justos e entrega rápida. Já fiz várias compras e sempre tudo perfeito!"</p>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-header">
-            <div class="testimonial-avatar">👤</div>
-            <div class="testimonial-info">
-              <h4>Pedro Costa</h4>
-              <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
-            </div>
-          </div>
-          <p class="testimonial-text">"Confiável e profissional. Recomendo para todos os gamers!"</p>
-        </div>
-      </div>
 
     </div>
   </div>
@@ -1100,22 +1027,6 @@
         `).join('');
       }
       
-      // Atualizar depoimentos
-      const testimonialsGrid = document.querySelector('.testimonials-grid');
-      if (testimonialsGrid) {
-        testimonialsGrid.innerHTML = config.depoimentos.map(dep => `
-          <div class="testimonial-card">
-            <div class="testimonial-header">
-              <div class="testimonial-avatar">${dep.avatar}</div>
-              <div class="testimonial-info">
-                <h4>${dep.nome}</h4>
-                <div class="testimonial-rating">${dep.rating}</div>
-              </div>
-            </div>
-            <p class="testimonial-text">${dep.texto}</p>
-          </div>
-        `).join('');
-      }
       
       // Atualizar seção sobre
       const aboutContent = document.querySelector('.about-content');
@@ -1200,6 +1111,20 @@
     
     // ===== NAVIGATION SYSTEM =====
     
+    function resetAllIframes() {
+      // Reset all game iframes to their original state
+      const iframes = document.querySelectorAll('.game-frame-container iframe');
+      iframes.forEach(iframe => {
+        // Store the original src
+        const originalSrc = iframe.src;
+        // Reset by removing and re-adding the src
+        iframe.src = '';
+        setTimeout(() => {
+          iframe.src = originalSrc;
+        }, 100);
+      });
+    }
+    
     function showSection(sectionName) {
       // Remove active class from all sections
       document.querySelectorAll('.section').forEach(section => {
@@ -1221,6 +1146,11 @@
       // Hide home button for main sections
       document.getElementById('homeButton').classList.remove('active');
       
+      // Reset all iframes when returning to a main section
+      if (sectionName === 'home' || sectionName === 'games' || sectionName === 'about' || sectionName === 'contact') {
+        resetAllIframes();
+      }
+      
       // Scroll to top
       window.scrollTo(0, 0);
     }
@@ -1241,6 +1171,16 @@
       
       // Show home button
       document.getElementById('homeButton').classList.add('active');
+      
+      // Reset the specific game iframe
+      const gameIframe = document.querySelector(`#${gameName} iframe`);
+      if (gameIframe) {
+        const originalSrc = gameIframe.src;
+        gameIframe.src = '';
+        setTimeout(() => {
+          gameIframe.src = originalSrc;
+        }, 50);
+      }
       
       // Scroll to top
       window.scrollTo(0, 0);

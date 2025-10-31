@@ -681,6 +681,338 @@ function addConnectButton() {
   nav.insertBefore(connectBtn, nav.lastElementChild);
 }
 
+// ═══════════════════════════════════════════════════════════════
+// 🔄 SISTEMA DE GIT INTEGRADO
+// ═══════════════════════════════════════════════════════════════
+
+const GIT_SERVER_URL = 'http://localhost:3333';
+let gitServerOnline = false;
+
+// Verificar status do servidor Git
+async function checkGitServer() {
+  try {
+    const response = await fetch(`${GIT_SERVER_URL}/status`);
+    const data = await response.json();
+    
+    if (data.status === 'online') {
+      gitServerOnline = true;
+      updateGitServerStatus(true);
+      return true;
+    }
+  } catch (error) {
+    gitServerOnline = false;
+    updateGitServerStatus(false);
+  }
+  return false;
+}
+
+// Atualizar status do servidor na interface
+function updateGitServerStatus(online) {
+  const statusDiv = document.getElementById('gitServerStatus');
+  const gitButton = document.getElementById('gitButton');
+  const startSection = document.getElementById('startServerSection');
+  
+  if (!statusDiv) return;
+  
+  if (online) {
+    statusDiv.innerHTML = `
+      <span style="font-size: 14px; font-weight: 600; color: #00ff88;">🟢 Servidor Online</span>
+      <div style="font-size: 11px; margin-top: 5px; opacity: 0.8;">Pronto para enviar!</div>
+    `;
+    statusDiv.style.borderColor = '#00ff88';
+    statusDiv.style.background = 'rgba(0, 255, 136, 0.1)';
+    
+    // Ocultar botão de iniciar
+    if (startSection) startSection.style.display = 'none';
+    
+    if (gitButton) {
+      gitButton.style.background = 'rgba(0, 255, 136, 0.2)';
+      gitButton.style.borderColor = '#00ff88';
+    }
+  } else {
+    statusDiv.innerHTML = `
+      <span style="font-size: 14px; font-weight: 600; color: #ff3366;">🔴 Servidor Offline</span>
+      <div style="font-size: 11px; margin-top: 5px; opacity: 0.8;">Clique abaixo para iniciar</div>
+    `;
+    statusDiv.style.borderColor = '#ff3366';
+    statusDiv.style.background = 'rgba(255, 51, 102, 0.1)';
+    
+    // Mostrar botão de iniciar
+    if (startSection) startSection.style.display = 'block';
+    
+    if (gitButton) {
+      gitButton.style.background = 'rgba(153, 51, 255, 0.2)';
+      gitButton.style.borderColor = 'var(--purple-vibrant)';
+    }
+  }
+}
+
+// Iniciar servidor manualmente pelo botão
+function startServerManually() {
+  showToast('🚀 Abrindo arquivo do servidor...', 'warning');
+  
+  // Criar link para o arquivo VBS
+  const link = document.createElement('a');
+  link.href = 'auto-start-git.vbs';
+  link.download = 'auto-start-git.vbs';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  
+  // Mostrar instruções
+  addGitLog('📋 Arquivo do servidor aberto. Se não iniciar automaticamente, execute: auto-start-git.vbs', 'warning');
+  
+  // Verificar após alguns segundos
+  setTimeout(async () => {
+    showToast('⏳ Verificando servidor...', 'warning');
+    
+    // Tentar várias vezes
+    for (let i = 0; i < 3; i++) {
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      const online = await checkGitServer();
+      if (online) {
+        showToast('✅ Servidor iniciado com sucesso!', 'success');
+        addGitLog('✅ Servidor Git online e pronto!', 'success');
+        return;
+      }
+    }
+    
+    // Se não conseguiu
+    showToast('⚠️ Execute manualmente: auto-start-git.vbs ou iniciar-servidor.bat', 'warning');
+    addGitLog('⚠️ Por favor, execute manualmente o arquivo auto-start-git.vbs', 'warning');
+  }, 1000);
+}
+
+// Tentar iniciar o servidor automaticamente
+async function tryStartServer() {
+  showToast('🚀 Tentando iniciar servidor...', 'warning');
+  
+  // Tentar abrir o .bat através de um link
+  const link = document.createElement('a');
+  link.href = 'iniciar-servidor.bat';
+  link.download = 'iniciar-servidor.bat';
+  link.style.display = 'none';
+  document.body.appendChild(link);
+  
+  // Tentar abrir via file protocol
+  try {
+    // Criar um iframe oculto para tentar executar
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.src = 'iniciar-servidor.bat';
+    document.body.appendChild(iframe);
+    
+    setTimeout(() => {
+      document.body.removeChild(iframe);
+    }, 2000);
+  } catch (e) {
+    console.log('Método iframe falhou');
+  }
+  
+  // Tentar via window.open
+  try {
+    const win = window.open('iniciar-servidor.bat', '_blank');
+    if (win) {
+      setTimeout(() => win.close(), 1000);
+    }
+  } catch (e) {
+    console.log('Método window.open falhou');
+  }
+  
+  document.body.removeChild(link);
+  
+  // Mostrar instruções alternativas
+  showToast('📋 Abrindo arquivo do servidor... Se não abrir, execute manualmente!', 'warning');
+  
+  // Aguardar um pouco e verificar novamente
+  setTimeout(async () => {
+    const online = await checkGitServer();
+    if (online) {
+      showToast('✅ Servidor iniciado com sucesso!', 'success');
+    } else {
+      showToast('⚠️ Execute manualmente: iniciar-servidor.bat', 'warning');
+    }
+  }, 3000);
+}
+
+// Abrir painel Git (com inicialização automática)
+async function openGitPanel() {
+  const online = await checkGitServer();
+  
+  if (!online) {
+    const choice = confirm(
+      '⚠️ Servidor Git está offline!\n\n' +
+      '🚀 Deseja que eu tente iniciar automaticamente?\n\n' +
+      '✅ OK = Tentar iniciar\n' +
+      '❌ Cancelar = Voltar'
+    );
+    
+    if (!choice) return;
+    
+    // Tentar iniciar o servidor
+    await tryStartServer();
+    
+    // Aguardar e verificar
+    showToast('⏳ Aguarde enquanto o servidor inicia...', 'warning');
+    
+    await new Promise(resolve => setTimeout(resolve, 3000));
+    
+    const nowOnline = await checkGitServer();
+    
+    if (!nowOnline) {
+      const manual = confirm(
+        '⚠️ Não foi possível iniciar automaticamente.\n\n' +
+        'Por favor, abra manualmente o arquivo:\n' +
+        'iniciar-servidor.bat\n\n' +
+        'Deseja abrir o painel mesmo assim?'
+      );
+      
+      if (!manual) return;
+    }
+  }
+  
+  document.getElementById('gitModal').classList.add('show');
+  
+  // Limpar campos
+  document.getElementById('gitCommitMessage').value = '';
+  document.getElementById('gitLogArea').innerHTML = '';
+  document.getElementById('gitStatusArea').style.display = 'none';
+}
+
+// Fechar painel Git
+function closeGitModal() {
+  document.getElementById('gitModal').classList.remove('show');
+}
+
+// Adicionar log no painel
+function addGitLog(message, type = 'info') {
+  const logArea = document.getElementById('gitLogArea');
+  const logEntry = document.createElement('div');
+  
+  let color = 'var(--text-color)';
+  let icon = 'ℹ️';
+  
+  if (type === 'success') {
+    color = '#00ff88';
+    icon = '✅';
+  } else if (type === 'error') {
+    color = '#ff3366';
+    icon = '❌';
+  } else if (type === 'warning') {
+    color = '#ffaa00';
+    icon = '⚠️';
+  } else if (type === 'loading') {
+    color = 'var(--purple-light)';
+    icon = '⏳';
+  }
+  
+  logEntry.style.cssText = `
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-left: 3px solid ${color};
+    background: rgba(0,0,0,0.3);
+    border-radius: 4px;
+    font-size: 13px;
+    color: ${color};
+  `;
+  
+  logEntry.innerHTML = `${icon} ${message}`;
+  logArea.appendChild(logEntry);
+  
+  // Scroll para o final
+  logArea.scrollTop = logArea.scrollHeight;
+}
+
+// Verificar mudanças
+async function checkGitStatus() {
+  addGitLog('Verificando mudanças...', 'loading');
+  
+  try {
+    const response = await fetch(`${GIT_SERVER_URL}/git/status`);
+    const data = await response.json();
+    
+    if (data.success) {
+      const statusArea = document.getElementById('gitStatusArea');
+      const statusText = document.getElementById('gitStatusText');
+      
+      if (data.hasChanges) {
+        statusText.textContent = data.output;
+        statusArea.style.display = 'block';
+        addGitLog(`${data.output.split('\n').length} arquivo(s) modificado(s)`, 'success');
+      } else {
+        statusArea.style.display = 'none';
+        addGitLog('Nenhuma mudança detectada', 'warning');
+      }
+    } else {
+      addGitLog('Erro ao verificar status: ' + data.error, 'error');
+    }
+  } catch (error) {
+    addGitLog('Erro de conexão! Verifique se o servidor está rodando.', 'error');
+  }
+}
+
+// Commit + Push
+async function gitCommitPush() {
+  const message = document.getElementById('gitCommitMessage').value.trim();
+  
+  if (!message) {
+    showToast('Digite uma mensagem para o commit!', 'warning');
+    return;
+  }
+  
+  // Verificar servidor
+  if (!gitServerOnline) {
+    const online = await checkGitServer();
+    if (!online) {
+      addGitLog('Servidor offline! Execute: iniciar-servidor.bat', 'error');
+      return;
+    }
+  }
+  
+  addGitLog('Iniciando processo...', 'loading');
+  
+  try {
+    const response = await fetch(`${GIT_SERVER_URL}/git/commit-push`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ message })
+    });
+    
+    const data = await response.json();
+    
+    if (data.success) {
+      // Adicionar cada passo do log
+      if (data.steps) {
+        data.steps.forEach(step => {
+          addGitLog(step, 'success');
+        });
+      }
+      
+      addGitLog(data.message, 'success');
+      showToast('🎉 Alterações enviadas com sucesso!', 'success');
+      
+      // Limpar mensagem
+      document.getElementById('gitCommitMessage').value = '';
+    } else {
+      addGitLog('Erro: ' + data.error, 'error');
+      showToast('Erro ao enviar alterações', 'error');
+    }
+  } catch (error) {
+    addGitLog('Erro de conexão: ' + error.message, 'error');
+    showToast('Erro de conexão com o servidor Git', 'error');
+  }
+}
+
+// Verificar servidor periodicamente
+setInterval(() => {
+  if (document.getElementById('gitModal').classList.contains('show')) {
+    checkGitServer();
+  }
+}, 5000);
+
 // Mensagem de boas-vindas
 window.onload = function() {
   console.log('%c⚙️ Dashboard Admin - Daoshi Store', 'font-size: 20px; color: #9933ff; font-weight: bold;');
@@ -701,5 +1033,8 @@ window.onload = function() {
   
   // Atualizar status inicial
   updateConnectionStatus(false);
+  
+  // Verificar servidor Git
+  checkGitServer();
 };
 

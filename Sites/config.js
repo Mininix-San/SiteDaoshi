@@ -112,28 +112,6 @@ const SITE_CONFIG = {
     }
   ],
 
-  // ===== DEPOIMENTOS =====
-  depoimentos: [
-    {
-      avatar: "👤",
-      nome: "João Silva",
-      rating: "⭐⭐⭐⭐⭐",
-      texto: "Melhor loja de games! Comprei gold no MIR4 e recebi na hora. Suporte excelente!"
-    },
-    {
-      avatar: "👤",
-      nome: "Maria Santos",
-      rating: "⭐⭐⭐⭐⭐",
-      texto: "Preços justos e entrega rápida. Já fiz várias compras e sempre tudo perfeito!"
-    },
-    {
-      avatar: "👤",
-      nome: "Pedro Costa",
-      rating: "⭐⭐⭐⭐⭐",
-      texto: "Confiável e profissional. Recomendo para todos os gamers!"
-    }
-  ],
-
   // ===== CARACTERÍSTICAS/DIFERENCIAIS =====
   features: [
     {
@@ -214,7 +192,6 @@ const SITE_CONFIG = {
   titulos: {
     jogos: "🎮 NOSSOS JOGOS 🎮",
     todosJogos: "🎮 TODOS OS JOGOS 🎮",
-    depoimentos: "⭐ DEPOIMENTOS ⭐",
     sobre: "📖 SOBRE NÓS 📖",
     quemSomos: "💜 Quem Somos",
     contato: "💬 ENTRE EM CONTATO 💬"
