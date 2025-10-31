@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0; url=Sites/index.html">
+  <title>Redirecionando para Daoshi Store...</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Press Start 2P', cursive;
+      background: linear-gradient(135deg, #1a0d24 0%, #2d1b3d 50%, #4a2d5a 100%);
+      color: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .loader {
+      font-size: 24px;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.1); }
+    }
+    .subtitle {
+      font-size: 12px;
+      margin-top: 20px;
+      color: #ffd700;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <div class="loader">🎮 Carregando Daoshi Store... 🎮</div>
+    <div class="subtitle">Redirecionando em instantes...</div>
+  </div>
+  
+  <script>
+    // Redireciona imediatamente
+    window.location.href = 'Sites/index.html';
+  </script>
+</body>
+</html>
+
