@@ -1,32 +1,19 @@
-# Node
-node_modules/
-npm-debug.log
-yarn-error.log
-package-lock.json
+# Ignorar tudo EXCETO o que queremos enviar
+/*
+!/.gitignore
+!/README.md
+!/index.html
+!/Sites/
 
-# Backups
-*.backup
+# Mas dentro de Sites, ignorar algumas coisas
+Sites/node_modules/
+
+# Ignorar arquivos temporários em qualquer lugar
+*.tmp
+*.log
 *.bak
-*.old
 
-# OS
+# Ignorar arquivos do sistema
 .DS_Store
 Thumbs.db
-desktop.ini
-
-# Editor
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# Logs
-*.log
-logs/
-
-# Temporários
-tmp/
-temp/
-*.tmp
 
